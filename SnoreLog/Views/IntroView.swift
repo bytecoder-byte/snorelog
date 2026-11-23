@@ -29,7 +29,8 @@ struct IntroView: View {
             .buttonStyle(.borderedProminent)
             .controlSize(.large)
             .padding(.horizontal, 24)
-            .padding(.bottom, 12)
+            .padding(.vertical, 12)
+            .background(.background)
         }
     }
 }
