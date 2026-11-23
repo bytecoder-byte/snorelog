@@ -1,0 +1,8 @@
+build/
+DerivedData/
+screenshots/
+*.xcuserstate
+xcuserdata/
+.DS_Store
+test.log
+build.log

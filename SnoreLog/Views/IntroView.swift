@@ -1,0 +1,44 @@
+import SwiftUI
+
+struct IntroView: View {
+    var onContinue: () -> Void
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 24) {
+            Spacer()
+            Image(systemName: "moon.zzz.fill")
+                .font(.system(size: 56))
+                .foregroundStyle(.tint)
+            Text("Find out how much you snore")
+                .font(.largeTitle.bold())
+            VStack(alignment: .leading, spacing: 16) {
+                IntroRow(icon: "bed.double.fill", text: "Start a recording when you go to bed and leave your phone on the nightstand, plugged in.")
+                IntroRow(icon: "waveform", text: "In the morning, SnoreLog finds your snoring on your iPhone and shows when and how loud it was.")
+                IntroRow(icon: "lock.fill", text: "Audio never leaves your phone. Full recordings are deleted after analysis unless you choose to keep them.")
+                IntroRow(icon: "cross.case.fill", text: "SnoreLog is not a medical device and can't diagnose sleep apnea. If you stop breathing, gasp or feel very tired during the day, talk to a doctor.")
+            }
+            Spacer()
+            Button(action: onContinue) {
+                Text("Get started").frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.borderedProminent)
+            .controlSize(.large)
+        }
+        .padding(24)
+    }
+}
+
+private struct IntroRow: View {
+    var icon: String
+    var text: String
+
+    var body: some View {
+        HStack(alignment: .top, spacing: 14) {
+            Image(systemName: icon)
+                .frame(width: 28)
+                .foregroundStyle(.tint)
+            Text(text)
+                .foregroundStyle(.secondary)
+        }
+    }
+}
