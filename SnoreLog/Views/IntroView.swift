@@ -4,8 +4,9 @@ struct IntroView: View {
     var onContinue: () -> Void
 
     var body: some View {
+        ScrollView {
         VStack(alignment: .leading, spacing: 24) {
-            Spacer()
+            Spacer(minLength: 24)
             Image(systemName: "moon.zzz.fill")
                 .font(.system(size: 56))
                 .foregroundStyle(.tint)
@@ -17,14 +18,19 @@ struct IntroView: View {
                 IntroRow(icon: "lock.fill", text: "Audio never leaves your phone. Full recordings are deleted after analysis unless you choose to keep them.")
                 IntroRow(icon: "cross.case.fill", text: "SnoreLog is not a medical device and can't diagnose sleep apnea. If you stop breathing, gasp or feel very tired during the day, talk to a doctor.")
             }
-            Spacer()
+            Spacer(minLength: 24)
+        }
+        .padding(24)
+        }
+        .safeAreaInset(edge: .bottom) {
             Button(action: onContinue) {
                 Text("Get started").frame(maxWidth: .infinity)
             }
             .buttonStyle(.borderedProminent)
             .controlSize(.large)
+            .padding(.horizontal, 24)
+            .padding(.bottom, 12)
         }
-        .padding(24)
     }
 }
 
@@ -39,6 +45,7 @@ private struct IntroRow: View {
                 .foregroundStyle(.tint)
             Text(text)
                 .foregroundStyle(.secondary)
+                .fixedSize(horizontal: false, vertical: true)
         }
     }
 }
