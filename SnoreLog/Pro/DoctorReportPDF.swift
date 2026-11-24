@@ -181,7 +181,7 @@ private final class PageWriter {
         let top = CGFloat(min(100, ((maxScore + 9) / 10) * 10))
 
         // Grid lines and labels.
-        let steps = 4
+        let steps = 5 // top is a multiple of 10, so labels stay whole numbers.
         for step in 0...steps {
             let value = top * CGFloat(step) / CGFloat(steps)
             let lineY = plot.maxY - plot.height * value / top
