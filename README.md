@@ -16,7 +16,7 @@ A quick way to test detection: start a night, play a snoring video from another 
 
 ## Running without a Mac
 
-iOS apps can only be built on macOS. If you don't have a Mac, push this folder to GitHub: the workflow in `.github/workflows/ios.yml` runs on GitHub's Mac machines on every push. It runs the unit tests, builds the app for the iPhone Simulator, launches it with sample data (`-demoData`) and saves screenshots. Download them from the run's **Artifacts** section. The artifact also holds `SnoreLog-simulator.zip`, which you can upload to a browser-based simulator such as Appetize.io to tap around the app.
+iOS apps can only be built on macOS. If you don't have a Mac, push this folder to GitHub: the workflow in `.github/workflows/ios.yml` runs on GitHub's Mac machines on every push. It runs the unit tests, builds the app for the iPhone Simulator, launches it with sample data (`-demoData`) and saves screenshots. Download them from the run's **Artifacts** section, or open the `screenshots` branch (`screenshots-<branch>` for other branches). The artifact also holds `SnoreLog-simulator.zip`, which you can upload to a browser-based simulator such as Appetize.io to tap around the app.
 
 The simulator has no real night to record, so recording and snore detection still need a real iPhone.
 
@@ -29,6 +29,7 @@ The simulator has no real night to record, so recording and snore detection stil
 | Detect | In the morning, Apple's built-in sound classifier (SoundAnalysis, `.version1`, label `snoring`) scores roughly 1-second windows. Windows above the sensitivity threshold that are less than 8 s apart are merged into episodes. | `Analysis/NightAnalyzer.swift`, `Analysis/NightScoring.swift` |
 | Score | Each episode's loudness compared with the room's noise floor gives Quiet, Loud or Very loud. The score is the share of the night spent snoring, weighted by loudness (0 to 100). | `NightScoring.score` |
 | Clips | The 30 most notable episodes keep a clip of up to 20 s. Full recordings are deleted afterwards unless "Keep full recordings" is on. | `ClipExporter` |
+| Compare | Each report compares the night with the analyzed night before it (score, snoring time, share of the night, loud episodes) and lists what changed: tags added or dropped, and bedtime or night length. Each tag is marked as pointing louder or quieter, from the person's own history once a tag has 2+ nights, otherwise from common knowledge. Tags can be edited after the fact. | `Analysis/NightComparison.swift`, `Views/NightComparisonView.swift` |
 | Store | SwiftData for nights and episodes, Swift Charts for the graphs. | `Models/SleepSession.swift`, `Views/` |
 
 **Why analysis happens in the morning, not live:** Apple's built-in classifier is reported to fail with `SNErrorCode.operationFailed` once the app is in the background, even when audio recording keeps working ([Apple forum thread](https://developer.apple.com/forums/thread/811582)). Recording all night and analyzing in the foreground avoids that and saves battery.

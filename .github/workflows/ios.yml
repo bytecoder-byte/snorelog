@@ -54,7 +54,8 @@ jobs:
       # Also publish screenshots and logs to a "screenshots" branch, so they can be
       # viewed on github.com without downloading artifacts.
       - name: Publish to the screenshots branch
-        if: always() && github.ref == 'refs/heads/main'
+        # main publishes to "screenshots"; other branches to "screenshots-<branch>".
+        if: always() && github.event_name == 'push'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -65,4 +66,6 @@ jobs:
           git add -A
           git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
             commit -qm "Screenshots for ${GITHUB_SHA}"
-          git push -f "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" screenshots
+          TARGET="screenshots"
+          if [ "${GITHUB_REF_NAME}" != "main" ]; then TARGET="screenshots-${GITHUB_REF_NAME//\//-}"; fi
+          git push -f "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "screenshots:${TARGET}"

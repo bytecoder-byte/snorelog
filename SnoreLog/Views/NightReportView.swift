@@ -9,20 +9,53 @@ struct NightReportView: View {
     @State private var isAnalyzing = false
     @State private var progress: Double = 0
     @State private var errorMessage: String?
+    @State private var isEditingTags = false
+    @Query(sort: \SleepSession.startDate, order: .reverse) private var allNights: [SleepSession]
+
+    private var analyzedNights: [SleepSession] { allNights.filter { $0.status == .done } }
+
+    /// This night compared with the analyzed night before it, if there is one.
+    private var comparison: NightComparison? {
+        let current = night.snapshot
+        guard let previous = NightComparison.previous(of: current, in: analyzedNights.map(\.snapshot)) else { return nil }
+        return NightComparison(current: current, previous: previous)
+    }
 
     var body: some View {
-        List {
-            switch night.status {
-            case .done:
-                summary
-                chart
-                if !night.factors.isEmpty { factors }
-                episodes
-                if night.score >= 40 { healthNote }
-            case .pendingAnalysis, .failed, .recording, .analyzing:
-                pending
+        ScrollViewReader { proxy in
+            List {
+                switch night.status {
+                case .done:
+                    summary
+                    if let comparison {
+                        ComparisonSection(comparison: comparison)
+                        ImpactSection(
+                            hints: ImpactHint.hints(
+                                for: comparison,
+                                history: analyzedNights.map { (factors: $0.factors, score: $0.score) }
+                            ),
+                            onEditTags: { isEditingTags = true }
+                        )
+                        .id("impact")
+                    } else {
+                        factors
+                    }
+                    chart
+                    episodes
+                    if night.score >= 40 { healthNote }
+                case .pendingAnalysis, .failed, .recording, .analyzing:
+                    pending
+                }
+            }
+            .task {
+                // Used for screenshots: scroll down to the comparison.
+                if DemoData.screen == "compare" {
+                    try? await Task.sleep(for: .milliseconds(600))
+                    proxy.scrollTo("impact", anchor: .top)
+                }
             }
         }
+        .sheet(isPresented: $isEditingTags) { EditTagsSheet(night: night) }
         .navigationTitle(night.startDate.formatted(.dateTime.weekday(.wide).day().month()))
         .navigationBarTitleDisplayMode(.inline)
         .onDisappear { player.stop() }
@@ -90,17 +123,22 @@ struct NightReportView: View {
         }
     }
 
+    /// Shown when there is no earlier night to compare with.
     private var factors: some View {
         Section("Tagged") {
-            FlowLayout(spacing: 8) {
-                ForEach(night.factors, id: \.self) { factor in
-                    Text(factor)
-                        .font(.subheadline)
-                        .padding(.horizontal, 12)
-                        .padding(.vertical, 6)
-                        .background(.quaternary, in: Capsule())
+            if !night.factors.isEmpty {
+                FlowLayout(spacing: 8) {
+                    ForEach(night.factors, id: \.self) { factor in
+                        Text(factor)
+                            .font(.subheadline)
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 6)
+                            .background(.quaternary, in: Capsule())
+                    }
                 }
             }
+            Button(night.factors.isEmpty ? "Add tags" : "Edit tags", systemImage: "tag") { isEditingTags = true }
+                .font(.subheadline)
         }
     }
 

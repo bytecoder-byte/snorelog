@@ -1,4 +1,5 @@
 import Testing
+import Foundation
 @testable import SnoreLog
 
 struct EpisodeBuilderTests {
@@ -109,5 +110,87 @@ struct FormatterTests {
         #expect(Formatters.duration(45) == "45s")
         #expect(Formatters.duration(125) == "2m")
         #expect(Formatters.duration(3 * 3600 + 20 * 60) == "3h 20m")
+        #expect(Formatters.duration(2 * 3600) == "2h")
+    }
+}
+
+struct NightComparisonTests {
+    private func night(
+        hour: Int, minute: Int = 0, day: Int = 1, score: Int, snoringMinutes: Double = 30,
+        recordedHours: Double = 8, loud: Int = 0, factors: [String] = []
+    ) -> NightSnapshot {
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = .current
+        let date = calendar.date(from: DateComponents(year: 2026, month: 11, day: day, hour: hour, minute: minute))!
+        return NightSnapshot(
+            startDate: date, recordedSeconds: recordedHours * 3600, snoringSeconds: snoringMinutes * 60,
+            score: score, episodeCount: loud + 3, loudEpisodeCount: loud, factors: factors
+        )
+    }
+
+    @Test func picksTheLatestEarlierNight() {
+        let current = night(hour: 23, day: 10, score: 20)
+        let nights = [night(hour: 23, day: 7, score: 1), night(hour: 23, day: 9, score: 2), current, night(hour: 23, day: 11, score: 3)]
+        #expect(NightComparison.previous(of: current, in: nights)?.score == 2)
+        #expect(NightComparison.previous(of: nights[0], in: nights) == nil)
+    }
+
+    @Test func verdictTreatsSmallChangesAsSimilar() {
+        let before = night(hour: 23, day: 1, score: 20)
+        #expect(NightComparison(current: night(hour: 23, day: 2, score: 22), previous: before).verdict == .similar)
+        #expect(NightComparison(current: night(hour: 23, day: 2, score: 30), previous: before).verdict == .worse)
+        #expect(NightComparison(current: night(hour: 23, day: 2, score: 10), previous: before).verdict == .better)
+    }
+
+    @Test func findsAddedAndRemovedTags() {
+        let comparison = NightComparison(
+            current: night(hour: 23, day: 2, score: 30, factors: ["Alcohol", "Nasal strip"]),
+            previous: night(hour: 23, day: 1, score: 10, factors: ["Nasal strip", "Side sleeping"])
+        )
+        #expect(comparison.addedFactors == ["Alcohol"])
+        #expect(comparison.removedFactors == ["Side sleeping"])
+    }
+
+    @Test func bedtimeShiftWrapsAroundMidnight() {
+        // 11 PM one night, 1 AM the next: two hours later, not 22 hours earlier.
+        let comparison = NightComparison(current: night(hour: 1, day: 3, score: 10), previous: night(hour: 23, day: 1, score: 10))
+        #expect(comparison.bedtimeShiftMinutes == 120)
+        let earlier = NightComparison(current: night(hour: 22, minute: 30, day: 2, score: 10), previous: night(hour: 23, day: 1, score: 10))
+        #expect(earlier.bedtimeShiftMinutes == -30)
+    }
+
+    @Test func hintsMatchingTheChangeComeFirst() {
+        let comparison = NightComparison(
+            current: night(hour: 1, day: 3, score: 35, factors: ["Alcohol"]),
+            previous: night(hour: 23, day: 1, score: 12, factors: ["Nasal strip"])
+        )
+        let hints = ImpactHint.hints(for: comparison, history: [])
+        // Both point to a louder night, then the later bedtime, which has no clear direction.
+        #expect(hints.map(\.title) == ["Alcohol", "Nasal strip", "Bed 2h later"])
+        #expect(hints[0].kind == .added && hints[0].effect == .louder)
+        #expect(hints[1].kind == .removed && hints[1].effect == .louder)
+        #expect(hints[2].effect == .unclear)
+    }
+
+    @Test func personalPatternOverridesGeneralKnowledge() {
+        // For this person, nights with a nasal strip have been louder, so dropping it points to quieter.
+        let history: [(factors: [String], score: Int)] = [
+            (["Nasal strip"], 30), (["Nasal strip"], 34), ([], 10), ([], 14),
+        ]
+        let comparison = NightComparison(
+            current: night(hour: 23, day: 2, score: 8),
+            previous: night(hour: 23, day: 1, score: 30, factors: ["Nasal strip"])
+        )
+        let hint = ImpactHint.hints(for: comparison, history: history).first
+        #expect(hint?.effect == .quieter)
+        #expect(hint?.detail == "Your score averages 20 higher with it (2 nights).")
+    }
+
+    @Test func noHintsWhenNothingChanged() {
+        let comparison = NightComparison(
+            current: night(hour: 23, day: 2, score: 15, factors: ["Alcohol"]),
+            previous: night(hour: 23, minute: 20, day: 1, score: 10, factors: ["Alcohol"])
+        )
+        #expect(ImpactHint.hints(for: comparison, history: []).isEmpty)
     }
 }
