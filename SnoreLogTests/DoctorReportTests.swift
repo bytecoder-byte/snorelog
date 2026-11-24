@@ -81,7 +81,8 @@ struct DoctorReportTests {
 
     @Test func rendersAnEmptyReport() throws {
         let data = DoctorReportPDF.render(DoctorReport(nights: [], period: .week, now: now, calendar: calendar))
-        let document = try #require(CGPDFDocument(try #require(CGDataProvider(data: data as CFData))))
+        let provider = try #require(CGDataProvider(data: data as CFData))
+        let document = try #require(CGPDFDocument(provider))
         #expect(document.numberOfPages == 1)
     }
 }
