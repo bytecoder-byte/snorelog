@@ -22,7 +22,8 @@ struct ProStoreTests {
         return session
     }
 
-    @Test func loadsAllThreePlansWithTheRightPrices() async throws {
+    @Test(.timeLimit(.minutes(1)))
+    func loadsAllThreePlansWithTheRightPrices() async throws {
         let session = try makeSession()
         defer { session.clearTransactions() }
         let store = ProStore(listenForTransactions: false)
@@ -39,27 +40,31 @@ struct ProStoreTests {
         #expect(store.isPro == false)
     }
 
-    @Test func buyingLifetimeUnlocksPro() async throws {
+    // Purchases go through SKTestSession.buyProduct rather than Product.purchase(), which waits for a
+    // confirmation sheet that a headless test run never shows. ProStore then has to notice the new
+    // entitlement on its own, the same way it does after a real purchase or a restore.
+    @Test(.timeLimit(.minutes(1)))
+    func lifetimePurchaseUnlocksPro() async throws {
         let session = try makeSession()
         defer { session.clearTransactions() }
         let store = ProStore(listenForTransactions: false)
         await store.load()
-        let lifetime = try #require(store.product(ProProducts.lifetime))
+        #expect(store.isPro == false)
 
-        let outcome = try await store.purchase(lifetime)
-        #expect(outcome == .purchased)
+        _ = try await session.buyProduct(identifier: ProProducts.lifetime)
+        await store.refreshEntitlements()
         #expect(store.isPro)
         #expect(store.activePlanName == "Lifetime")
     }
 
-    @Test func subscribingYearlyUnlocksPro() async throws {
+    @Test(.timeLimit(.minutes(1)))
+    func yearlySubscriptionUnlocksPro() async throws {
         let session = try makeSession()
         defer { session.clearTransactions() }
         let store = ProStore(listenForTransactions: false)
-        await store.load()
-        let yearly = try #require(store.product(ProProducts.yearly))
 
-        #expect(try await store.purchase(yearly) == .purchased)
+        _ = try await session.buyProduct(identifier: ProProducts.yearly)
+        await store.refreshEntitlements()
         #expect(store.isPro)
         #expect(store.activePlanName == "Yearly")
     }
