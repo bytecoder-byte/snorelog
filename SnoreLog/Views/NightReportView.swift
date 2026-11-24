@@ -14,6 +14,11 @@ struct NightReportView: View {
 
     private var analyzedNights: [SleepSession] { allNights.filter { $0.status == .done } }
 
+    /// The analyzed night before this one, if there is one.
+    private var previousNight: SleepSession? {
+        analyzedNights.first { $0.startDate < night.startDate }
+    }
+
     /// This night compared with the analyzed night before it, if there is one.
     private var comparison: NightComparison? {
         let current = night.snapshot
@@ -32,7 +37,7 @@ struct NightReportView: View {
                         ImpactSection(
                             hints: ImpactHint.hints(
                                 for: comparison,
-                                history: analyzedNights.map { (factors: $0.factors, score: $0.score) }
+                                history: analyzedNights.map { (factors: $0.allFactors, score: $0.score) }
                             ),
                             onEditTags: { isEditingTags = true }
                         )
@@ -40,6 +45,14 @@ struct NightReportView: View {
                     } else {
                         factors
                     }
+                    DaytimeSection(
+                        current: night.daytime,
+                        previous: comparison == nil ? nil : previousNight?.daytime,
+                        previousName: comparison == nil ? nil : previousNight.map {
+                            DaytimeActivity.window(beforeBedtime: $0.startDate).start.formatted(.dateTime.weekday(.wide))
+                        }
+                    )
+                    .id("day")
                     chart
                     episodes
                     if night.score >= 40 { healthNote }
@@ -48,10 +61,14 @@ struct NightReportView: View {
                 }
             }
             .task {
+                // Read the day before from Apple Health for this night and the one it's compared with.
+                await HealthImporter.refresh([night, previousNight].compactMap { $0 }, in: context)
+            }
+            .task {
                 // Used for screenshots: scroll down to the comparison.
-                if DemoData.screen == "compare" {
+                if DemoData.screen == "compare" || DemoData.screen == "day" {
                     try? await Task.sleep(for: .milliseconds(600))
-                    proxy.scrollTo("impact", anchor: .top)
+                    proxy.scrollTo(DemoData.screen == "day" ? "day" : "impact", anchor: .top)
                 }
             }
         }

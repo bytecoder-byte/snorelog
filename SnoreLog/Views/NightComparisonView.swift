@@ -147,6 +147,12 @@ struct ImpactSection: View {
                                     .background(.quaternary, in: Capsule())
                                     .foregroundStyle(.secondary)
                             }
+                            if hint.fromHealth {
+                                Image(systemName: "heart.fill")
+                                    .font(.caption2)
+                                    .foregroundStyle(.pink)
+                                    .accessibilityLabel("From Apple Health")
+                            }
                         }
                         Text(hint.detail)
                             .font(.subheadline)
@@ -162,7 +168,9 @@ struct ImpactSection: View {
         } header: {
             Text("What could have made a difference")
         } footer: {
-            Text("Based on your tags and bedtime. These are possible links, not proof. Tag more nights to see your own patterns.")
+            Text(hints.contains(where: \.fromHealth)
+                 ? "Based on your tags, bedtime and Apple Health (marked with a heart). These are possible links, not proof. More nights show your own patterns."
+                 : "Based on your tags and bedtime. These are possible links, not proof. Tag more nights to see your own patterns.")
         }
     }
 
@@ -202,6 +210,7 @@ struct EditTagsSheet: View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
+                    FactorPicker(title: "The day before", options: NightFactors.day, selection: $selection)
                     FactorPicker(title: "Anything different that night?", options: NightFactors.factors, selection: $selection)
                     FactorPicker(title: "Remedies tried", options: NightFactors.remedies, selection: $selection)
                 }
@@ -224,5 +233,80 @@ struct EditTagsSheet: View {
         }
         .onAppear { selection = Set(night.factors) }
         .presentationDetents([.medium, .large])
+    }
+}
+
+/// "Your day": what Apple Health recorded for the day before this night, next to the day before that.
+struct DaytimeSection: View {
+    var current: DaytimeActivity?
+    var previous: DaytimeActivity?
+    /// Shown as the first column's heading, for example "Sunday".
+    var previousName: String?
+
+    private struct Row: Identifiable {
+        var title: String
+        var symbol: String
+        var value: (DaytimeActivity) -> Double?
+        var format: (Double) -> String
+        var id: String { title }
+    }
+
+    private static let rows: [Row] = [
+        Row(title: "Workouts", symbol: "figure.run", value: \.workoutMinutes, format: DaytimeActivity.minutes),
+        Row(title: "Strength", symbol: "dumbbell.fill", value: \.strengthMinutes, format: DaytimeActivity.minutes),
+        Row(title: "Steps", symbol: "shoeprints.fill", value: \.steps, format: DaytimeActivity.count),
+        Row(title: "Water", symbol: "drop.fill", value: \.waterMilliliters, format: DaytimeActivity.liters),
+        Row(title: "Caffeine", symbol: "cup.and.saucer.fill", value: \.caffeineMilligrams, format: { "\(Int($0.rounded())) mg" }),
+        Row(title: "Alcohol", symbol: "wineglass.fill", value: \.alcoholicDrinks, format: { $0 == 1 ? "1 drink" : "\(DaytimeActivity.count($0)) drinks" }),
+    ]
+
+    private var visibleRows: [Row] {
+        Self.rows.filter { row in
+            [current, previous].contains { day in day.flatMap(row.value).map { $0 > 0 } ?? false }
+        }
+    }
+
+    var body: some View {
+        if !visibleRows.isEmpty {
+            Section {
+                Grid(alignment: .leading, horizontalSpacing: 12, verticalSpacing: 10) {
+                    if let previousName {
+                        GridRow {
+                            Text("")
+                            Text(previousName).gridColumnAlignment(.trailing)
+                            Text("This day").gridColumnAlignment(.trailing)
+                        }
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                    }
+                    ForEach(visibleRows) { row in
+                        GridRow {
+                            Label(row.title, systemImage: row.symbol)
+                            if previousName != nil {
+                                Text(text(for: row, in: previous))
+                                    .foregroundStyle(.secondary)
+                                    .monospacedDigit()
+                                    .gridColumnAlignment(.trailing)
+                            }
+                            Text(text(for: row, in: current))
+                                .fontWeight(.semibold)
+                                .monospacedDigit()
+                                .gridColumnAlignment(.trailing)
+                        }
+                        .accessibilityElement(children: .combine)
+                    }
+                }
+                .padding(.vertical, 4)
+            } header: {
+                Label("Your day", systemImage: "heart.fill")
+            } footer: {
+                Text("From Apple Health, for the day before each night up to bedtime. A dash means nothing was logged.")
+            }
+        }
+    }
+
+    private func text(for row: Row, in day: DaytimeActivity?) -> String {
+        guard let value = day.flatMap(row.value), value > 0 else { return "–" }
+        return row.format(value)
     }
 }

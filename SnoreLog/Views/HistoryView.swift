@@ -61,7 +61,7 @@ struct HistoryView: View {
 
     @ViewBuilder
     private var impact: some View {
-        let impacts = FactorImpact.compute(nights: analyzed.map { (factors: $0.factors, score: $0.score) })
+        let impacts = FactorImpact.compute(nights: analyzed.map { (factors: $0.allFactors, score: $0.score) })
             .filter { $0.averageWithout != nil && $0.nightsWith >= 2 }
         if !impacts.isEmpty {
             Section {
@@ -79,7 +79,7 @@ struct HistoryView: View {
             } header: {
                 Text("What seems to matter")
             } footer: {
-                Text("Average snore score with each tag compared with nights without it. Shown once a tag is used on 2 or more nights. More nights give a clearer picture.")
+                Text("Average snore score with each tag (yours, or from Apple Health) compared with nights without it. Shown once a tag is used on 2 or more nights. More nights give a clearer picture.")
             }
         }
     }

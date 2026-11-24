@@ -40,7 +40,29 @@ enum DemoData {
             let alcohol = factors.contains("Alcohol")
             let strip = factors.contains("Nasal strip")
 
+            // What Apple Health would have for the day before.
+            let workedOut = daysAgo % 2 == 0
+            var day = DaytimeActivity(
+                workoutMinutes: workedOut ? Double.random(in: 25...60, using: &generator).rounded() : nil,
+                strengthMinutes: workedOut && daysAgo % 4 == 2 ? 30 : nil,
+                steps: Double.random(in: 4_000...13_000, using: &generator).rounded(),
+                waterMilliliters: Double.random(in: 900...2_600, using: &generator).rounded(),
+                caffeineMilligrams: Double.random(in: 80...240, using: &generator).rounded(),
+                lateCaffeineMilligrams: nil,
+                alcoholicDrinks: alcohol ? 2 : nil
+            )
+            if daysAgo == 2 {
+                day = DaytimeActivity(workoutMinutes: 52, strengthMinutes: 35, steps: 11_820, waterMilliliters: 2_300,
+                                      caffeineMilligrams: 120, lateCaffeineMilligrams: nil, alcoholicDrinks: nil)
+            }
+            if daysAgo == 1 {
+                day = DaytimeActivity(workoutMinutes: nil, strengthMinutes: nil, steps: 4_210, waterMilliliters: 700,
+                                      caffeineMilligrams: 260, lateCaffeineMilligrams: 140, alcoholicDrinks: 3)
+            }
+
             let night = SleepSession(startDate: bedtime, factors: factors)
+            night.daytime = day
+            night.dayImportedAt = bedtime.addingTimeInterval(14 * 3600)
             night.endDate = bedtime.addingTimeInterval(recorded)
             night.recordedSeconds = recorded
             night.noiseFloorDB = -58
@@ -49,7 +71,11 @@ enum DemoData {
             let minutes = Int(recorded / 60)
             var levels = (0..<minutes).map { _ in Float(-58 + Double.random(in: -2...2, using: &generator)) }
             var episodes: [(TimeInterval, TimeInterval, SnoreIntensity)] = []
-            let count = Int.random(in: 6...14, using: &generator) + (alcohol ? 10 : 0) - (strip ? 4 : 0) + (factors.contains("Slept on back") ? 3 : 0)
+            var count = Int.random(in: 6...14, using: &generator)
+            if alcohol { count += 10 }
+            if strip { count -= 4 }
+            if factors.contains("Slept on back") { count += 3 }
+            if workedOut { count -= 2 }
             for _ in 0..<max(2, count) {
                 let start = Double.random(in: 900...(recorded - 900), using: &generator)
                 let duration = Double.random(in: 30...(alcohol ? 900 : 420), using: &generator)
