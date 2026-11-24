@@ -5,6 +5,7 @@ import SwiftUI
 struct HistoryView: View {
     @Environment(\.modelContext) private var context
     @Query(sort: \SleepSession.startDate, order: .reverse) private var nights: [SleepSession]
+    @State private var showingReport = false
 
     private var analyzed: [SleepSession] { nights.filter { $0.status == .done } }
 
@@ -30,6 +31,14 @@ struct HistoryView: View {
             }
             .navigationTitle("History")
             .navigationDestination(for: SleepSession.self) { NightReportView(night: $0) }
+            .toolbar {
+                if !analyzed.isEmpty {
+                    ToolbarItem(placement: .primaryAction) {
+                        Button("PDF report", systemImage: "doc.richtext") { showingReport = true }
+                    }
+                }
+            }
+            .sheet(isPresented: $showingReport) { DoctorReportView() }
         }
     }
 

@@ -4,6 +4,7 @@ import SwiftUI
 @main
 struct SnoreLogApp: App {
     @State private var recorder = NightRecorder()
+    @State private var proStore = ProStore()
     let container: ModelContainer
 
     init() {
@@ -20,6 +21,8 @@ struct SnoreLogApp: App {
         WindowGroup {
             ContentView()
                 .environment(recorder)
+                .environment(proStore)
+                .task { await proStore.load() }
         }
         .modelContainer(container)
     }

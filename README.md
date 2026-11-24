@@ -20,6 +20,24 @@ iOS apps can only be built on macOS. If you don't have a Mac, push this folder t
 
 The simulator has no real night to record, so recording and snore detection still need a real iPhone.
 
+## SnoreLog Pro
+
+Everything above stays free. **SnoreLog Pro** is an optional upgrade, sold with StoreKit 2:
+
+| Plan | Product ID | Price |
+|---|---|---|
+| Yearly, with a 7-day free trial | `com.example.snorelog.pro.yearly` | $24.99 |
+| Monthly | `com.example.snorelog.pro.monthly` | $3.99 |
+| Lifetime (one-time purchase) | `com.example.snorelog.pro.lifetime` | $49.99 |
+
+The first Pro feature is a **PDF report for your doctor** (History > PDF report, or Settings): an overview of the period (average snore score, snoring time, quiet nights, trend), a chart of nightly scores, how tags line up with scores, and a night-by-night log. It describes recorded nights only and carries a "not a medical device" footer on every page.
+
+- Code: `SnoreLog/Pro/` (`ProStore` for purchases, `PaywallView`, `DoctorReport` for the numbers, `DoctorReportPDF` for drawing).
+- Local testing: `SnoreLogTests/SnoreLog.storekit` holds the three products. The shared scheme points Xcode at it, so purchases work in the simulator without App Store Connect (if Xcode doesn't pick it up, choose it under Product > Scheme > Edit Scheme > Run > Options > StoreKit Configuration). The unit tests buy against the same file with `SKTestSession`.
+- `-proUnlocked` as a launch argument turns Pro on for screenshots.
+
+**Before selling:** create the same three products in App Store Connect (subscription group "SnoreLog Pro", the yearly plan with a 1-week free-trial introductory offer), sign the Paid Apps Agreement, enroll in the App Store Small Business Program (15% commission), change the `com.example.snorelog` prefix in `ProProducts` and the `.storekit` file to match your bundle ID, and set `AppLinks.privacyPolicy` to a hosted privacy policy. Keep marketing free of medical words such as "apnea" or "diagnose".
+
 ## How it works
 
 | Step | What happens | Where |
