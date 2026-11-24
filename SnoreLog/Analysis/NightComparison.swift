@@ -12,6 +12,23 @@ struct NightSnapshot: Equatable {
     /// Episodes rated loud or very loud.
     var loudEpisodeCount: Int
     var factors: [String]
+    /// The day before this night, from Apple Health. Nil when Health isn't used.
+    var daytime: DaytimeActivity? = nil
+
+    /// Manual tags plus the tags earned from Health data, without duplicates.
+    var allFactors: [String] {
+        NightSnapshot.combine(factors, daytime?.tags ?? [])
+    }
+
+    static func combine(_ manual: [String], _ health: [String]) -> [String] {
+        var seen = Set<String>()
+        return (manual + health).filter { seen.insert($0).inserted }
+    }
+
+    /// True when a tag came from Health data rather than only from a manual tag.
+    func isFromHealth(_ tag: String) -> Bool {
+        !factors.contains(tag) && (daytime?.tags.contains(tag) ?? false)
+    }
 
     var snoringPercent: Double {
         recordedSeconds > 0 ? snoringSeconds / recordedSeconds * 100 : 0
@@ -42,10 +59,10 @@ struct NightComparison: Equatable {
         return scoreChange < 0 ? .better : .worse
     }
 
-    /// Tags used on this night but not the one before.
-    var addedFactors: [String] { current.factors.filter { !previous.factors.contains($0) }.sorted() }
-    /// Tags used the night before but not on this night.
-    var removedFactors: [String] { previous.factors.filter { !current.factors.contains($0) }.sorted() }
+    /// Tags (manual or from Health) on this night but not the one before.
+    var addedFactors: [String] { current.allFactors.filter { !previous.allFactors.contains($0) }.sorted() }
+    /// Tags (manual or from Health) on the night before but not this night.
+    var removedFactors: [String] { previous.allFactors.filter { !current.allFactors.contains($0) }.sorted() }
 
     /// Minutes between the two bedtimes, ignoring the date. Positive means a later bedtime.
     var bedtimeShiftMinutes: Int {
@@ -91,12 +108,22 @@ struct ImpactHint: Identifiable, Equatable {
     var detail: String
     var kind: Kind
     var effect: Effect
+    /// The tag came from Apple Health data, not a manual tag.
+    var fromHealth = false
 
     var id: String { title }
 
     /// Everyday tags that tend to go with more snoring. Remedies tend to go with less.
-    static let usuallyLouder: Set<String> = ["Alcohol", "Congested", "Late meal", "Very tired", "Slept on back", "Smoking"]
+    static let usuallyLouder: Set<String> = ["Alcohol", "Congested", "Late meal", "Very tired", "Slept on back", "Smoking", DaytimeTag.lowWater]
     static let usuallyQuieter: Set<String> = ["Side sleeping", "Nasal strip", "Mouth tape", "Anti-snore pillow", "Mouthguard", "Nasal spray"]
+
+    /// What is generally said about daytime tags whose effect on snoring varies from person to person.
+    static let daytimeNotes: [String: String] = [
+        DaytimeTag.exercise: "Activity can change how deeply you sleep.",
+        DaytimeTag.strength: "Activity can change how deeply you sleep.",
+        DaytimeTag.activeDay: "Activity can change how deeply you sleep.",
+        DaytimeTag.lateCaffeine: "Caffeine late in the day can make sleep lighter.",
+    ]
 
     /// A personal pattern is used once a tag has been on this many nights and there are nights without it.
     static let minimumNightsForPattern = 2
@@ -114,11 +141,25 @@ struct ImpactHint: Identifiable, Equatable {
 
         for factor in comparison.addedFactors {
             let (effect, detail) = describe(factor: factor, impact: impacts[factor], present: true)
-            hints.append(ImpactHint(title: factor, detail: detail, kind: .added, effect: effect))
+            let measured = comparison.current.isFromHealth(factor) ? comparison.current.daytime?.measurement(for: factor) : nil
+            hints.append(ImpactHint(
+                title: factor,
+                detail: [measured.map { "\($0) that day." }, detail].compactMap { $0 }.joined(separator: " "),
+                kind: .added,
+                effect: effect,
+                fromHealth: comparison.current.isFromHealth(factor)
+            ))
         }
         for factor in comparison.removedFactors {
             let (effect, detail) = describe(factor: factor, impact: impacts[factor], present: false)
-            hints.append(ImpactHint(title: factor, detail: detail, kind: .removed, effect: effect))
+            let measured = comparison.previous.isFromHealth(factor) ? comparison.previous.daytime?.measurement(for: factor) : nil
+            hints.append(ImpactHint(
+                title: factor,
+                detail: [measured.map { "The day before: \($0)." }, detail].compactMap { $0 }.joined(separator: " "),
+                kind: .removed,
+                effect: effect,
+                fromHealth: comparison.previous.isFromHealth(factor)
+            ))
         }
 
         let shift = comparison.bedtimeShiftMinutes
@@ -188,6 +229,9 @@ struct ImpactHint: Identifiable, Equatable {
         if usuallyQuieter.contains(factor) {
             return (present ? .quieter : .louder,
                     present ? "Helps some people snore less." : "Helps some people snore less. You used it the night before.")
+        }
+        if let note = daytimeNotes[factor] {
+            return (.unclear, note + " Not enough nights yet to see your own pattern.")
         }
         return (.unclear, "Not enough nights yet to see a pattern.")
     }
