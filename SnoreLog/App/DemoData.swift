@@ -3,7 +3,8 @@ import SwiftData
 
 /// Sample nights for screenshots and for trying the app in the simulator, which has no
 /// real night to record. Enabled with the launch argument `-demoData`.
-/// `-screen report|history|settings|tonight` opens a specific screen.
+/// `-screen report|compare|history|settings|tonight|paywall|pdf` opens a specific screen.
+/// `-proUnlocked` turns SnoreLog Pro on without buying it.
 enum DemoData {
     static var isEnabled: Bool { ProcessInfo.processInfo.arguments.contains("-demoData") }
 

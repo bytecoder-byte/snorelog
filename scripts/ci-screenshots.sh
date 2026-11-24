@@ -40,6 +40,15 @@ shoot 3-report -demoData -hasSeenIntro YES -screen report
 shoot 3b-compare -demoData -hasSeenIntro YES -screen compare
 shoot 4-history -demoData -hasSeenIntro YES -screen history
 shoot 5-settings -demoData -hasSeenIntro YES -screen settings
+shoot 6-paywall -demoData -hasSeenIntro YES -screen paywall
+shoot 7-pdf-report -demoData -hasSeenIntro YES -proUnlocked -screen pdf
+
+# The PDF screen also saves the report into the app's Documents folder. Copy it out.
+DATA_DIR="$(xcrun simctl get_app_container "$DEVICE_ID" "$BUNDLE_ID" data 2>/dev/null || true)"
+if [ -n "$DATA_DIR" ] && [ -f "$DATA_DIR/Documents/SnoreLog-report-demo.pdf" ]; then
+  cp "$DATA_DIR/Documents/SnoreLog-report-demo.pdf" "$OUT/SnoreLog-report-demo.pdf"
+  echo "Saved $OUT/SnoreLog-report-demo.pdf"
+fi
 
 # Zip the simulator build so it can be uploaded to a browser-based simulator such as Appetize.
 ROOT="$PWD"
