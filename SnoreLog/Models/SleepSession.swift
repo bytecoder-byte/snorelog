@@ -122,3 +122,18 @@ enum NightFactors {
     static let factors = ["Alcohol", "Congested", "Late meal", "Very tired", "Slept on back", "Smoking"]
     static let remedies = ["Side sleeping", "Nasal strip", "Mouth tape", "Anti-snore pillow", "Mouthguard", "Nasal spray"]
 }
+
+extension SleepSession {
+    /// The numbers the night-to-night comparison needs.
+    var snapshot: NightSnapshot {
+        NightSnapshot(
+            startDate: startDate,
+            recordedSeconds: recordedSeconds,
+            snoringSeconds: snoringSeconds,
+            score: score,
+            episodeCount: episodes.count,
+            loudEpisodeCount: episodes.filter { $0.intensity >= .loud }.count,
+            factors: factors
+        )
+    }
+}

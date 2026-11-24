@@ -37,6 +37,7 @@ shoot() {
 shoot 1-intro
 shoot 2-tonight -demoData -hasSeenIntro YES -screen tonight
 shoot 3-report -demoData -hasSeenIntro YES -screen report
+shoot 3b-compare -demoData -hasSeenIntro YES -screen compare
 shoot 4-history -demoData -hasSeenIntro YES -screen history
 shoot 5-settings -demoData -hasSeenIntro YES -screen settings
 

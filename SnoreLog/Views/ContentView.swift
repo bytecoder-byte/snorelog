@@ -7,7 +7,7 @@ struct ContentView: View {
     @Query(sort: \SleepSession.startDate, order: .reverse) private var nights: [SleepSession]
 
     var body: some View {
-        if DemoData.screen == "report", let latest = nights.first {
+        if DemoData.screen == "report" || DemoData.screen == "compare", let latest = nights.first {
             // Used for screenshots: open the latest night's report directly.
             NavigationStack { NightReportView(night: latest) }
         } else {
