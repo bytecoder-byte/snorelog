@@ -6,6 +6,7 @@ struct TonightView: View {
     @Environment(NightRecorder.self) private var recorder
     @Environment(\.modelContext) private var context
     @AppStorage(SettingsKeys.activeSessionID) private var activeSessionID = ""
+    @AppStorage(SettingsKeys.useHealth) private var useHealth = false
 
     @State private var selectedFactors: Set<String> = []
     @State private var isAnalyzing = false
@@ -56,6 +57,12 @@ struct TonightView: View {
             VStack(alignment: .leading, spacing: 24) {
                 FactorPicker(title: "Anything different tonight?", options: NightFactors.factors, selection: $selectedFactors)
                 FactorPicker(title: "Trying a remedy?", options: NightFactors.remedies, selection: $selectedFactors)
+                FactorPicker(
+                    title: "How was your day?",
+                    note: useHealth ? "Apple Health fills these in after the night. Tag anything it misses." : nil,
+                    options: NightFactors.day,
+                    selection: $selectedFactors
+                )
 
                 VStack(alignment: .leading, spacing: 8) {
                     Label("Put your phone on the nightstand, within about 1 m of your head.", systemImage: "iphone")
@@ -219,12 +226,18 @@ private struct DimmedView: View {
 
 struct FactorPicker: View {
     var title: String
+    var note: String? = nil
     var options: [String]
     @Binding var selection: Set<String>
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text(title).font(.headline)
+            if let note {
+                Label(note, systemImage: "heart.fill")
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+            }
             FlowLayout(spacing: 8) {
                 ForEach(options, id: \.self) { option in
                     let isOn = selection.contains(option)

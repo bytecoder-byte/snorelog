@@ -94,7 +94,7 @@ struct DoctorReport: Equatable {
 
     /// Tags used on at least 2 nights, with at least 1 night without them to compare against.
     var tagImpacts: [FactorImpact] {
-        FactorImpact.compute(nights: nights.map { (factors: $0.factors, score: $0.score) })
+        FactorImpact.compute(nights: nights.map { (factors: $0.allFactors, score: $0.score) })
             .filter { $0.nightsWith >= 2 && $0.averageWithout != nil }
     }
 

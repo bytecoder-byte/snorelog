@@ -56,6 +56,8 @@ enum AnalysisService {
             }
             session.status = .done
             try? context.save()
+            // Read the day before from Apple Health, if it's turned on. Never fails the analysis.
+            await HealthImporter.refresh([session], in: context)
         } catch {
             session.status = .failed
             session.analysisError = error.localizedDescription
@@ -86,4 +88,6 @@ enum SettingsKeys {
     static let keepFullRecordings = "keepFullRecordings"
     static let activeSessionID = "activeSessionID"
     static let hasSeenIntro = "hasSeenIntro"
+    /// Read daytime activity from Apple Health. Also settable with the launch argument `-useHealth YES`.
+    static let useHealth = "useHealth"
 }

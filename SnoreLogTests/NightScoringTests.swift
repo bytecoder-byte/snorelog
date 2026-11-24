@@ -194,3 +194,95 @@ struct NightComparisonTests {
         #expect(ImpactHint.hints(for: comparison, history: []).isEmpty)
     }
 }
+
+struct DaytimeActivityTests {
+    private func date(day: Int, hour: Int, minute: Int = 0) -> Date {
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = .current
+        return calendar.date(from: DateComponents(year: 2026, month: 11, day: day, hour: hour, minute: minute))!
+    }
+
+    @Test func turnsReadingsIntoTags() {
+        let day = DaytimeActivity(
+            workoutMinutes: 45, strengthMinutes: 30, steps: 12_000, waterMilliliters: 600,
+            caffeineMilligrams: 250, lateCaffeineMilligrams: 120, alcoholicDrinks: 2
+        )
+        #expect(day.tags == ["Exercise", "Strength training", "Active day", "Low water", "Late caffeine", "Alcohol"])
+    }
+
+    @Test func smallAmountsAndMissingDataEarnNoTags() {
+        let quiet = DaytimeActivity(
+            workoutMinutes: 10, strengthMinutes: 5, steps: 3_000, waterMilliliters: 2_000,
+            caffeineMilligrams: 90, lateCaffeineMilligrams: 20, alcoholicDrinks: 0
+        )
+        #expect(quiet.tags.isEmpty)
+        // No water logged at all is not "low water".
+        #expect(DaytimeActivity(waterMilliliters: nil).tags.isEmpty)
+        #expect(DaytimeActivity().isEmpty)
+    }
+
+    @Test func windowRunsFromStartOfDayToBedtime() {
+        let evening = DaytimeActivity.window(beforeBedtime: date(day: 10, hour: 23))
+        #expect(evening.start == date(day: 10, hour: 0))
+        #expect(evening.end == date(day: 10, hour: 23))
+        // Going to bed at 1 AM still belongs to the day before.
+        let late = DaytimeActivity.window(beforeBedtime: date(day: 11, hour: 1))
+        #expect(late.start == date(day: 10, hour: 0))
+        #expect(late.end == date(day: 11, hour: 1))
+    }
+
+    @Test func describesMeasurements() {
+        let day = DaytimeActivity(workoutMinutes: 50, strengthMinutes: 35, alcoholicDrinks: 1)
+        #expect(day.measurement(for: "Exercise") == "50m of workouts, 35m strength")
+        #expect(day.measurement(for: "Alcohol") == "1 drink logged")
+        #expect(day.measurement(for: "Nasal strip") == nil)
+    }
+}
+
+struct DaytimeComparisonTests {
+    private func night(day: Int, score: Int, factors: [String] = [], daytime: DaytimeActivity? = nil) -> NightSnapshot {
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = .current
+        let date = calendar.date(from: DateComponents(year: 2026, month: 11, day: day, hour: 23))!
+        return NightSnapshot(
+            startDate: date, recordedSeconds: 8 * 3600, snoringSeconds: 1800,
+            score: score, episodeCount: 3, loudEpisodeCount: 0, factors: factors, daytime: daytime
+        )
+    }
+
+    @Test func healthTagsJoinManualTagsWithoutDuplicates() {
+        let snapshot = night(day: 1, score: 10, factors: ["Alcohol", "Exercise"], daytime: DaytimeActivity(workoutMinutes: 40, alcoholicDrinks: 2))
+        #expect(snapshot.allFactors == ["Alcohol", "Exercise"])
+        #expect(!snapshot.isFromHealth("Exercise"))
+    }
+
+    @Test func comparesHealthDataBetweenNights() {
+        let comparison = NightComparison(
+            current: night(day: 2, score: 30, daytime: DaytimeActivity(steps: 4_000, waterMilliliters: 700)),
+            previous: night(day: 1, score: 10, daytime: DaytimeActivity(workoutMinutes: 45, steps: 11_000, waterMilliliters: 2_000))
+        )
+        #expect(comparison.addedFactors == ["Low water"])
+        #expect(comparison.removedFactors == ["Active day", "Exercise"])
+
+        let hints = ImpactHint.hints(for: comparison, history: [])
+        // Low water points to a louder night, so it comes first, with the measured amount.
+        #expect(hints.first?.title == "Low water")
+        #expect(hints.first?.effect == .louder)
+        #expect(hints.first?.fromHealth == true)
+        #expect(hints.first?.detail.hasPrefix("0.7 L of water logged that day.") == true)
+        let exercise = hints.first { $0.title == "Exercise" }
+        #expect(exercise?.kind == .removed)
+        #expect(exercise?.effect == .unclear)
+        #expect(exercise?.detail.hasPrefix("The day before: 45m of workouts.") == true)
+    }
+
+    @Test func manualDayTagsWorkWithoutHealth() {
+        let comparison = NightComparison(
+            current: night(day: 2, score: 8, factors: ["Exercise"]),
+            previous: night(day: 1, score: 9)
+        )
+        let hint = ImpactHint.hints(for: comparison, history: []).first
+        #expect(hint?.title == "Exercise")
+        #expect(hint?.fromHealth == false)
+    }
+}

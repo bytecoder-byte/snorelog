@@ -28,6 +28,17 @@ final class SleepSession {
     var minuteLevels: [Float]
     var analysisError: String?
 
+    // The day before this night, read from Apple Health (all optional, so older nights migrate cleanly).
+    var dayWorkoutMinutes: Double?
+    var dayStrengthMinutes: Double?
+    var daySteps: Double?
+    var dayWaterMilliliters: Double?
+    var dayCaffeineMilligrams: Double?
+    var dayLateCaffeineMilligrams: Double?
+    var dayAlcoholicDrinks: Double?
+    /// When Health was last read for this night. Nil means never.
+    var dayImportedAt: Date?
+
     @Relationship(deleteRule: .cascade, inverse: \SnoreEpisode.session)
     var episodes: [SnoreEpisode] = []
 
@@ -119,6 +130,8 @@ enum SessionStorage {
 
 /// Tags people can add before sleeping, so the app can show what seems to help.
 enum NightFactors {
+    /// About the day: filled in from Apple Health when it's on, or tagged by hand.
+    static let day = DaytimeTag.manual
     static let factors = ["Alcohol", "Congested", "Late meal", "Very tired", "Slept on back", "Smoking"]
     static let remedies = ["Side sleeping", "Nasal strip", "Mouth tape", "Anti-snore pillow", "Mouthguard", "Nasal spray"]
 }
@@ -133,7 +146,36 @@ extension SleepSession {
             score: score,
             episodeCount: episodes.count,
             loudEpisodeCount: episodes.filter { $0.intensity >= .loud }.count,
-            factors: factors
+            factors: factors,
+            daytime: daytime
         )
     }
+
+    /// The Health readings for the day before, or nil if there are none.
+    var daytime: DaytimeActivity? {
+        get {
+            let activity = DaytimeActivity(
+                workoutMinutes: dayWorkoutMinutes,
+                strengthMinutes: dayStrengthMinutes,
+                steps: daySteps,
+                waterMilliliters: dayWaterMilliliters,
+                caffeineMilligrams: dayCaffeineMilligrams,
+                lateCaffeineMilligrams: dayLateCaffeineMilligrams,
+                alcoholicDrinks: dayAlcoholicDrinks
+            )
+            return activity.isEmpty ? nil : activity
+        }
+        set {
+            dayWorkoutMinutes = newValue?.workoutMinutes
+            dayStrengthMinutes = newValue?.strengthMinutes
+            daySteps = newValue?.steps
+            dayWaterMilliliters = newValue?.waterMilliliters
+            dayCaffeineMilligrams = newValue?.caffeineMilligrams
+            dayLateCaffeineMilligrams = newValue?.lateCaffeineMilligrams
+            dayAlcoholicDrinks = newValue?.alcoholicDrinks
+        }
+    }
+
+    /// Manual tags plus tags earned from Health data.
+    var allFactors: [String] { NightSnapshot.combine(factors, daytime?.tags ?? []) }
 }

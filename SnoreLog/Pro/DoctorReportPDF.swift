@@ -237,7 +237,7 @@ private final class PageWriter {
         guard !impacts.isEmpty else { return }
         ensureSpace(80)
         sectionTitle("Tags and average snore score")
-        paragraph("Tags the person chose before sleeping. These show associations in their own nights, not causes.",
+        paragraph("Tags chosen before sleeping, plus any read from Apple Health. These show associations in their own nights, not causes.",
                   font: .systemFont(ofSize: 9), color: muted)
         y += 6
 
@@ -273,7 +273,7 @@ private final class PageWriter {
                 String(format: "%.0f%%", night.snoringPercent),
                 "\(night.score)",
                 "\(night.loudEpisodeCount)",
-                night.factors.isEmpty ? "-" : night.factors.joined(separator: ", "),
+                night.allFactors.isEmpty ? "-" : night.allFactors.joined(separator: ", "),
             ]
         }
         table(columns: columns, rows: rows)

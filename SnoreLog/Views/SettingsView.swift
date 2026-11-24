@@ -6,6 +6,8 @@ struct SettingsView: View {
     @Environment(\.modelContext) private var context
     @AppStorage(SettingsKeys.sensitivity) private var sensitivity: Sensitivity = .medium
     @AppStorage(SettingsKeys.keepFullRecordings) private var keepFullRecordings = false
+    @AppStorage(SettingsKeys.useHealth) private var useHealth = false
+    @State private var healthError: String?
     @State private var storageText = ""
     @State private var confirmDeleteAll = false
     @Environment(ProStore.self) private var store
@@ -27,6 +29,25 @@ struct SettingsView: View {
                     Text("Detection")
                 } footer: {
                     Text(sensitivity.detail + " Applies to nights analyzed from now on.")
+                }
+
+                if HealthImporter.isAvailable {
+                    Section {
+                        Toggle(isOn: Binding(get: { useHealth }, set: setUseHealth)) {
+                            Label {
+                                Text("Use Apple Health")
+                            } icon: {
+                                Image(systemName: "heart.fill").foregroundStyle(.pink)
+                            }
+                        }
+                        if let healthError {
+                            Text(healthError).font(.footnote).foregroundStyle(.orange)
+                        }
+                    } header: {
+                        Text("Your day")
+                    } footer: {
+                        Text("Reads workouts, strength training, steps, water, caffeine and alcohol from the day before each night, so reports can show what might have made a difference. SnoreLog only reads from Health, never writes to it, and the data stays on your iPhone. Choose what it can read in the Health app. Without Health, you can tag your day by hand.")
+                    }
                 }
 
                 Section {
@@ -106,6 +127,26 @@ struct SettingsView: View {
             Text("SnoreLog Pro")
         } footer: {
             Text("Everything else in SnoreLog stays free.")
+        }
+    }
+
+    private func setUseHealth(_ on: Bool) {
+        healthError = nil
+        guard on else {
+            useHealth = false
+            HealthImporter.clearImportedData(in: context)
+            return
+        }
+        Task {
+            do {
+                try await HealthImporter.requestAccess()
+                useHealth = true
+                // Fill in the days before nights already recorded.
+                let nights = (try? context.fetch(FetchDescriptor<SleepSession>())) ?? []
+                await HealthImporter.refresh(nights, in: context, force: true)
+            } catch {
+                healthError = "Couldn't connect to Apple Health: \(error.localizedDescription)"
+            }
         }
     }
 
