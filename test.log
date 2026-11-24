@@ -1,0 +1,994 @@
+Command line invocation:
+    /Applications/Xcode_16.4.app/Contents/Developer/usr/bin/xcodebuild test -project SnoreLog.xcodeproj -scheme SnoreLog -destination id=87C401A1-6137-4CF6-8AAC-E12E171B64D7 CODE_SIGNING_ALLOWED=NO
+
+Build settings from command line:
+    CODE_SIGNING_ALLOWED = NO
+
+--- xcodebuild: WARNING: Using the first of multiple matching destinations:
+{ platform:iOS Simulator, arch:arm64, id:87C401A1-6137-4CF6-8AAC-E12E171B64D7, OS:26.2, name:iPhone SE (3rd generation) }
+{ platform:iOS Simulator, arch:x86_64, id:87C401A1-6137-4CF6-8AAC-E12E171B64D7, OS:26.2, name:iPhone SE (3rd generation) }
+ComputePackagePrebuildTargetDependencyGraph
+
+Prepare packages
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (2 targets)
+    Target 'SnoreLogTests' in project 'SnoreLog'
+        ➜ Explicit dependency on target 'SnoreLog' in project 'SnoreLog'
+    Target 'SnoreLog' in project 'SnoreLog' (no dependencies)
+
+GatherProvisioningInputs
+
+CreateBuildDescription
+
+ExecuteExternalTool /Applications/Xcode_16.4.app/Contents/Developer/usr/bin/actool --print-asset-tag-combinations --output-format xml1 /Users/runner/work/snorelog/snorelog/SnoreLog/Assets.xcassets
+
+ExecuteExternalTool /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc --version
+
+ExecuteExternalTool /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -isysroot /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk -x c -c /dev/null
+
+ExecuteExternalTool /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld -version_details
+
+ExecuteExternalTool /Applications/Xcode_16.4.app/Contents/Developer/usr/bin/actool --version --output-format xml1
+
+Build description signature: 1c92bacb794355c2d3f982c59fe9fe59
+Build description path: /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/XCBuildData/1c92bacb794355c2d3f982c59fe9fe59.xcbuilddata
+ClangStatCache /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk /Users/runner/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator18.5-22F76-96ae0914227b19deccb34b33ba7b5dea.sdkstatcache
+    cd /Users/runner/work/snorelog/snorelog/SnoreLog.xcodeproj
+    /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk -o /Users/runner/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator18.5-22F76-96ae0914227b19deccb34b33ba7b5dea.sdkstatcache
+
+CreateBuildDirectory /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products
+    cd /Users/runner/work/snorelog/snorelog/SnoreLog.xcodeproj
+    builtin-create-build-directory /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products
+
+CreateBuildDirectory /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex
+    cd /Users/runner/work/snorelog/snorelog/SnoreLog.xcodeproj
+    builtin-create-build-directory /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog-22e8e657504504339612ca6605bb7d04-VFS-iphonesimulator/all-product-headers.yaml
+    cd /Users/runner/work/snorelog/snorelog/SnoreLog.xcodeproj
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog-22e8e657504504339612ca6605bb7d04-VFS-iphonesimulator/all-product-headers.yaml
+
+CreateBuildDirectory /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator
+    cd /Users/runner/work/snorelog/snorelog/SnoreLog.xcodeproj
+    builtin-create-build-directory /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator
+
+CreateBuildDirectory /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator
+    cd /Users/runner/work/snorelog/snorelog/SnoreLog.xcodeproj
+    builtin-create-build-directory /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/SnoreLog.hmap (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/SnoreLog.hmap
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/empty-SnoreLogTests.plist (in target 'SnoreLogTests' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/empty-SnoreLogTests.plist
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/SnoreLogTests.hmap (in target 'SnoreLogTests' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/SnoreLogTests.hmap
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/SnoreLogTests.DependencyStaticMetadataFileList (in target 'SnoreLogTests' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/SnoreLogTests.DependencyStaticMetadataFileList
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/SnoreLogTests.DependencyMetadataFileList (in target 'SnoreLogTests' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/SnoreLogTests.DependencyMetadataFileList
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/SnoreLogTests-project-headers.hmap (in target 'SnoreLogTests' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/SnoreLogTests-project-headers.hmap
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/SnoreLogTests-own-target-headers.hmap (in target 'SnoreLogTests' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/SnoreLogTests-own-target-headers.hmap
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/SnoreLogTests-generated-files.hmap (in target 'SnoreLogTests' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/SnoreLogTests-generated-files.hmap
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/SnoreLogTests-all-target-headers.hmap (in target 'SnoreLogTests' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/SnoreLogTests-all-target-headers.hmap
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/SnoreLogTests-all-non-framework-target-headers.hmap (in target 'SnoreLogTests' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/SnoreLogTests-all-non-framework-target-headers.hmap
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/Objects-normal/arm64/SnoreLogTests_const_extract_protocols.json (in target 'SnoreLogTests' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/Objects-normal/arm64/SnoreLogTests_const_extract_protocols.json
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/Objects-normal/arm64/SnoreLogTests.SwiftFileList (in target 'SnoreLogTests' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/Objects-normal/arm64/SnoreLogTests.SwiftFileList
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/Objects-normal/arm64/SnoreLogTests.SwiftConstValuesFileList (in target 'SnoreLogTests' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/Objects-normal/arm64/SnoreLogTests.SwiftConstValuesFileList
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/Objects-normal/arm64/SnoreLogTests.LinkFileList (in target 'SnoreLogTests' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/Objects-normal/arm64/SnoreLogTests.LinkFileList
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/Objects-normal/arm64/SnoreLogTests-OutputFileMap.json (in target 'SnoreLogTests' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/Objects-normal/arm64/SnoreLogTests-OutputFileMap.json
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/SnoreLog.DependencyStaticMetadataFileList (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/SnoreLog.DependencyStaticMetadataFileList
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/SnoreLog.DependencyMetadataFileList (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/SnoreLog.DependencyMetadataFileList
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/SnoreLog-project-headers.hmap (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/SnoreLog-project-headers.hmap
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/SnoreLog-own-target-headers.hmap (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/SnoreLog-own-target-headers.hmap
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/SnoreLog-generated-files.hmap (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/SnoreLog-generated-files.hmap
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/SnoreLog-all-target-headers.hmap (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/SnoreLog-all-target-headers.hmap
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/SnoreLog-all-non-framework-target-headers.hmap (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/SnoreLog-all-non-framework-target-headers.hmap
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/SnoreLog-DebugDylibPath-normal-arm64.txt (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/SnoreLog-DebugDylibPath-normal-arm64.txt
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/SnoreLog-DebugDylibInstallName-normal-arm64.txt (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/SnoreLog-DebugDylibInstallName-normal-arm64.txt
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64/SnoreLog_const_extract_protocols.json (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64/SnoreLog_const_extract_protocols.json
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64/SnoreLog.SwiftFileList (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64/SnoreLog.SwiftFileList
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64/SnoreLog.SwiftConstValuesFileList (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64/SnoreLog.SwiftConstValuesFileList
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64/SnoreLog.LinkFileList (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64/SnoreLog.LinkFileList
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64/SnoreLog-OutputFileMap.json (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64/SnoreLog-OutputFileMap.json
+
+MkDir /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/PlugIns/SnoreLogTests.xctest (in target 'SnoreLogTests' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    /bin/mkdir -p /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/PlugIns/SnoreLogTests.xctest
+
+MkDir /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/PlugIns (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    /bin/mkdir -p /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/PlugIns
+
+MkDir /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/Frameworks (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    /bin/mkdir -p /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/Frameworks
+
+MkDir /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    /bin/mkdir -p /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app
+
+Ld /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/__preview.dylib normal (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios17.0-simulator -dynamiclib -isysroot /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk -O0 -L/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator -F/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator -install_name @rpath/SnoreLog.debug.dylib -dead_strip -rdynamic -Xlinker -no_deduplicate -Xlinker -objc_abi_version -Xlinker 2 -Xlinker -dependency_info -Xlinker /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64/SnoreLog_dependency_info.dat -o /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/__preview.dylib
+
+MkDir /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/assetcatalog_output/unthinned (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    /bin/mkdir -p /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/assetcatalog_output/unthinned
+
+MkDir /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/assetcatalog_output/thinned (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    /bin/mkdir -p /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/assetcatalog_output/thinned
+
+GenerateAssetSymbols /Users/runner/work/snorelog/snorelog/SnoreLog/Assets.xcassets (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    /Applications/Xcode_16.4.app/Contents/Developer/usr/bin/actool /Users/runner/work/snorelog/snorelog/SnoreLog/Assets.xcassets --compile /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app --output-format human-readable-text --notices --warnings --export-dependency-info /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/assetcatalog_dependencies --output-partial-info-plist /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/assetcatalog_generated_info.plist --app-icon AppIcon --accent-color AccentColor --compress-pngs --enable-on-demand-resources YES --development-region en --target-device iphone --minimum-deployment-target 17.0 --platform iphonesimulator --bundle-identifier com.example.snorelog --generate-swift-asset-symbols /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/DerivedSources/GeneratedAssetSymbols.swift --generate-objc-asset-symbols /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/DerivedSources/GeneratedAssetSymbols.h --generate-asset-symbol-index /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/DerivedSources/GeneratedAssetSymbols-Index.plist
+/* com.apple.actool.compilation-results */
+/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/DerivedSources/GeneratedAssetSymbols-Index.plist
+/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/DerivedSources/GeneratedAssetSymbols.h
+/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/DerivedSources/GeneratedAssetSymbols.swift
+
+
+CpResource /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/PrivacyInfo.xcprivacy /Users/runner/work/snorelog/snorelog/SnoreLog/PrivacyInfo.xcprivacy (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/runner/work/snorelog/snorelog/SnoreLog/PrivacyInfo.xcprivacy /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app
+
+Copy /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/Frameworks/libXCTestSwiftSupport.dylib /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libXCTestSwiftSupport.dylib (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -exclude Headers -exclude PrivateHeaders -exclude Modules -exclude \*.tbd -resolve-src-symlinks /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libXCTestSwiftSupport.dylib /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/Frameworks
+
+Copy /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/Frameworks/libXCTestBundleInject.dylib /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libXCTestBundleInject.dylib (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -exclude Headers -exclude PrivateHeaders -exclude Modules -exclude \*.tbd -resolve-src-symlinks /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libXCTestBundleInject.dylib /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/Frameworks
+
+Copy /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/Frameworks/XCUnit.framework /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/PrivateFrameworks/XCUnit.framework (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -exclude Headers -exclude PrivateHeaders -exclude Modules -exclude \*.tbd -resolve-src-symlinks /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/PrivateFrameworks/XCUnit.framework /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/Frameworks
+
+Copy /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/Frameworks/XCUIAutomation.framework /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCUIAutomation.framework (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -exclude Headers -exclude PrivateHeaders -exclude Modules -exclude \*.tbd -resolve-src-symlinks /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCUIAutomation.framework /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/Frameworks
+
+Copy /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/Frameworks/XCTestSupport.framework /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/PrivateFrameworks/XCTestSupport.framework (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -exclude Headers -exclude PrivateHeaders -exclude Modules -exclude \*.tbd -resolve-src-symlinks /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/PrivateFrameworks/XCTestSupport.framework /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/Frameworks
+
+Copy /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/Frameworks/XCTestCore.framework /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/PrivateFrameworks/XCTestCore.framework (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -exclude Headers -exclude PrivateHeaders -exclude Modules -exclude \*.tbd -resolve-src-symlinks /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/PrivateFrameworks/XCTestCore.framework /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/Frameworks
+
+Copy /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/Frameworks/XCTest.framework /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -exclude Headers -exclude PrivateHeaders -exclude Modules -exclude \*.tbd -resolve-src-symlinks /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/Frameworks
+
+Copy /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/Frameworks/XCTAutomationSupport.framework /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/PrivateFrameworks/XCTAutomationSupport.framework (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -exclude Headers -exclude PrivateHeaders -exclude Modules -exclude \*.tbd -resolve-src-symlinks /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/PrivateFrameworks/XCTAutomationSupport.framework /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/Frameworks
+
+Copy /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/Frameworks/Testing.framework /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/Testing.framework (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -exclude Headers -exclude PrivateHeaders -exclude Modules -exclude \*.tbd -resolve-src-symlinks /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/Testing.framework /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/Frameworks
+
+CompileAssetCatalogVariant thinned /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app /Users/runner/work/snorelog/snorelog/SnoreLog/Assets.xcassets (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    /Applications/Xcode_16.4.app/Contents/Developer/usr/bin/actool /Users/runner/work/snorelog/snorelog/SnoreLog/Assets.xcassets --compile /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/assetcatalog_output/thinned --output-format human-readable-text --notices --warnings --export-dependency-info /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/assetcatalog_dependencies_thinned --output-partial-info-plist /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/assetcatalog_generated_info.plist_thinned --app-icon AppIcon --accent-color AccentColor --compress-pngs --enable-on-demand-resources YES --filter-for-thinning-device-configuration iPhone14,6 --filter-for-device-os-version 26.2 --development-region en --target-device iphone --minimum-deployment-target 17.0 --platform iphonesimulator
+/* com.apple.actool.compilation-results */
+/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/assetcatalog_generated_info.plist_thinned
+/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/assetcatalog_output/thinned/AppIcon60x60@2x.png
+/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/assetcatalog_output/thinned/AppIcon76x76@2x~ipad.png
+/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/assetcatalog_output/thinned/Assets.car
+
+
+SwiftDriver SnoreLog normal arm64 com.apple.xcode.tools.swift.compiler (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    builtin-SwiftDriver -- /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name SnoreLog -Onone -enforce-exclusivity\=checked @/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64/SnoreLog.SwiftFileList -DDEBUG -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk -target arm64-apple-ios17.0-simulator -g -module-cache-path /Users/runner/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Index.noindex/DataStore -swift-version 5 -I /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator -F /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator -emit-localized-strings -emit-localized-strings-path /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64 -c -j3 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/runner/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator18.5-22F76-96ae0914227b19deccb34b33ba7b5dea.sdkstatcache -output-file-map /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64/SnoreLog-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64/SnoreLog.swiftmodule -validate-clang-modules-once -clang-build-session-file /Users/runner/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64/SnoreLog_const_extract_protocols.json -Xcc -iquote -Xcc /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/SnoreLog-generated-files.hmap -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/SnoreLog-own-target-headers.hmap -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/SnoreLog-all-target-headers.hmap -Xcc -iquote -Xcc /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/SnoreLog-project-headers.hmap -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/include -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/DerivedSources-normal/arm64 -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/DerivedSources/arm64 -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64/SnoreLog-Swift.h -working-directory /Users/runner/work/snorelog/snorelog -experimental-emit-module-separately -disable-cmo
+
+SwiftEmitModule normal arm64 Emitting\ module\ for\ SnoreLog (in target 'SnoreLog' from project 'SnoreLog')
+EmitSwiftModule normal arm64 (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    
+
+SwiftCompile normal arm64 Compiling\ RecordingManifest.swift,\ SleepSession.swift,\ AnalysisService.swift,\ ContentView.swift,\ NightAnalyzer.swift,\ HistoryView.swift /Users/runner/work/snorelog/snorelog/SnoreLog/Audio/RecordingManifest.swift /Users/runner/work/snorelog/snorelog/SnoreLog/Models/SleepSession.swift /Users/runner/work/snorelog/snorelog/SnoreLog/Analysis/AnalysisService.swift /Users/runner/work/snorelog/snorelog/SnoreLog/Views/ContentView.swift /Users/runner/work/snorelog/snorelog/SnoreLog/Analysis/NightAnalyzer.swift /Users/runner/work/snorelog/snorelog/SnoreLog/Views/HistoryView.swift (in target 'SnoreLog' from project 'SnoreLog')
+SwiftCompile normal arm64 /Users/runner/work/snorelog/snorelog/SnoreLog/Audio/RecordingManifest.swift (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    
+
+SwiftCompile normal arm64 /Users/runner/work/snorelog/snorelog/SnoreLog/Models/SleepSession.swift (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    
+
+SwiftCompile normal arm64 /Users/runner/work/snorelog/snorelog/SnoreLog/Analysis/AnalysisService.swift (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    
+
+SwiftCompile normal arm64 /Users/runner/work/snorelog/snorelog/SnoreLog/Views/ContentView.swift (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    
+
+SwiftCompile normal arm64 /Users/runner/work/snorelog/snorelog/SnoreLog/Analysis/NightAnalyzer.swift (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    
+
+SwiftCompile normal arm64 /Users/runner/work/snorelog/snorelog/SnoreLog/Views/HistoryView.swift (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    
+
+SwiftCompile normal arm64 Compiling\ DemoData.swift,\ SettingsView.swift,\ SnoreLogApp.swift,\ TonightView.swift,\ ClipPlayer.swift,\ NightRecorder.swift /Users/runner/work/snorelog/snorelog/SnoreLog/App/DemoData.swift /Users/runner/work/snorelog/snorelog/SnoreLog/Views/SettingsView.swift /Users/runner/work/snorelog/snorelog/SnoreLog/App/SnoreLogApp.swift /Users/runner/work/snorelog/snorelog/SnoreLog/Views/TonightView.swift /Users/runner/work/snorelog/snorelog/SnoreLog/Audio/ClipPlayer.swift /Users/runner/work/snorelog/snorelog/SnoreLog/Audio/NightRecorder.swift (in target 'SnoreLog' from project 'SnoreLog')
+SwiftCompile normal arm64 /Users/runner/work/snorelog/snorelog/SnoreLog/App/DemoData.swift (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    
+
+SwiftCompile normal arm64 /Users/runner/work/snorelog/snorelog/SnoreLog/Views/SettingsView.swift (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    
+
+SwiftCompile normal arm64 /Users/runner/work/snorelog/snorelog/SnoreLog/App/SnoreLogApp.swift (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    
+
+SwiftCompile normal arm64 /Users/runner/work/snorelog/snorelog/SnoreLog/Views/TonightView.swift (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    
+
+SwiftCompile normal arm64 /Users/runner/work/snorelog/snorelog/SnoreLog/Audio/ClipPlayer.swift (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    
+
+SwiftCompile normal arm64 /Users/runner/work/snorelog/snorelog/SnoreLog/Audio/NightRecorder.swift (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    
+
+LinkAssetCatalog /Users/runner/work/snorelog/snorelog/SnoreLog/Assets.xcassets (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    builtin-linkAssetCatalog --thinned /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/assetcatalog_output/thinned --thinned-dependencies /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/assetcatalog_dependencies_thinned --thinned-info-plist-content /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/assetcatalog_generated_info.plist_thinned --unthinned /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/assetcatalog_output/unthinned --unthinned-dependencies /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/assetcatalog_dependencies_unthinned --unthinned-info-plist-content /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/assetcatalog_generated_info.plist_unthinned --output /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app --plist-output /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/assetcatalog_generated_info.plist
+note: Emplaced /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/Assets.car (in target 'SnoreLog' from project 'SnoreLog')
+note: Emplaced /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/AppIcon60x60@2x.png (in target 'SnoreLog' from project 'SnoreLog')
+note: Emplaced /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/AppIcon76x76@2x~ipad.png (in target 'SnoreLog' from project 'SnoreLog')
+
+SwiftDriverJobDiscovery normal arm64 Emitting module for SnoreLog (in target 'SnoreLog' from project 'SnoreLog')
+
+SwiftDriver\ Compilation\ Requirements SnoreLog normal arm64 com.apple.xcode.tools.swift.compiler (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    builtin-Swift-Compilation-Requirements -- /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name SnoreLog -Onone -enforce-exclusivity\=checked @/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64/SnoreLog.SwiftFileList -DDEBUG -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk -target arm64-apple-ios17.0-simulator -g -module-cache-path /Users/runner/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Index.noindex/DataStore -swift-version 5 -I /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator -F /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator -emit-localized-strings -emit-localized-strings-path /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64 -c -j3 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/runner/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator18.5-22F76-96ae0914227b19deccb34b33ba7b5dea.sdkstatcache -output-file-map /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64/SnoreLog-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64/SnoreLog.swiftmodule -validate-clang-modules-once -clang-build-session-file /Users/runner/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64/SnoreLog_const_extract_protocols.json -Xcc -iquote -Xcc /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/SnoreLog-generated-files.hmap -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/SnoreLog-own-target-headers.hmap -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/SnoreLog-all-target-headers.hmap -Xcc -iquote -Xcc /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/SnoreLog-project-headers.hmap -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/include -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/DerivedSources-normal/arm64 -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/DerivedSources/arm64 -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64/SnoreLog-Swift.h -working-directory /Users/runner/work/snorelog/snorelog -experimental-emit-module-separately -disable-cmo
+
+ProcessInfoPlistFile /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/Info.plist /Users/runner/work/snorelog/snorelog/SnoreLog-Info.plist (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    builtin-infoPlistUtility /Users/runner/work/snorelog/snorelog/SnoreLog-Info.plist -producttype com.apple.product-type.application -genpkginfo /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -additionalcontentfile /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/assetcatalog_generated_info.plist -o /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/Info.plist
+
+SwiftMergeGeneratedHeaders /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/DerivedSources/SnoreLog-Swift.h /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64/SnoreLog-Swift.h (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    builtin-swiftHeaderTool -arch arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64/SnoreLog-Swift.h -o /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/DerivedSources/SnoreLog-Swift.h
+
+Copy /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.swiftmodule/arm64-apple-ios-simulator.swiftmodule /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64/SnoreLog.swiftmodule (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64/SnoreLog.swiftmodule /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.swiftmodule/arm64-apple-ios-simulator.swiftmodule
+
+Copy /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.swiftmodule/arm64-apple-ios-simulator.swiftdoc /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64/SnoreLog.swiftdoc (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64/SnoreLog.swiftdoc /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.swiftmodule/arm64-apple-ios-simulator.swiftdoc
+
+Copy /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.swiftmodule/arm64-apple-ios-simulator.abi.json /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64/SnoreLog.abi.json (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64/SnoreLog.abi.json /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.swiftmodule/arm64-apple-ios-simulator.abi.json
+
+Copy /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64/SnoreLog.swiftsourceinfo (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64/SnoreLog.swiftsourceinfo /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo
+
+SwiftCompile normal arm64 Compiling\ NightComparison.swift,\ IntroView.swift,\ NightScoring.swift,\ NightComparisonView.swift,\ NightReportView.swift,\ GeneratedAssetSymbols.swift /Users/runner/work/snorelog/snorelog/SnoreLog/Analysis/NightComparison.swift /Users/runner/work/snorelog/snorelog/SnoreLog/Views/IntroView.swift /Users/runner/work/snorelog/snorelog/SnoreLog/Analysis/NightScoring.swift /Users/runner/work/snorelog/snorelog/SnoreLog/Views/NightComparisonView.swift /Users/runner/work/snorelog/snorelog/SnoreLog/Views/NightReportView.swift /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/DerivedSources/GeneratedAssetSymbols.swift (in target 'SnoreLog' from project 'SnoreLog')
+
+SwiftCompile normal arm64 /Users/runner/work/snorelog/snorelog/SnoreLog/Analysis/NightComparison.swift (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    
+
+SwiftCompile normal arm64 /Users/runner/work/snorelog/snorelog/SnoreLog/Views/IntroView.swift (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    
+
+SwiftCompile normal arm64 /Users/runner/work/snorelog/snorelog/SnoreLog/Analysis/NightScoring.swift (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    
+
+SwiftCompile normal arm64 /Users/runner/work/snorelog/snorelog/SnoreLog/Views/NightComparisonView.swift (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    
+
+SwiftCompile normal arm64 /Users/runner/work/snorelog/snorelog/SnoreLog/Views/NightReportView.swift (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    
+
+SwiftCompile normal arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/DerivedSources/GeneratedAssetSymbols.swift (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    
+
+SwiftDriverJobDiscovery normal arm64 Compiling NightComparison.swift, IntroView.swift, NightScoring.swift, NightComparisonView.swift, NightReportView.swift, GeneratedAssetSymbols.swift (in target 'SnoreLog' from project 'SnoreLog')
+
+SwiftDriver SnoreLogTests normal arm64 com.apple.xcode.tools.swift.compiler (in target 'SnoreLogTests' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    builtin-SwiftDriver -- /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name SnoreLogTests -Onone -enforce-exclusivity\=checked @/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/Objects-normal/arm64/SnoreLogTests.SwiftFileList -DDEBUG -plugin-path /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk -target arm64-apple-ios17.0-simulator -g -module-cache-path /Users/runner/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Index.noindex/DataStore -swift-version 5 -I /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator -I /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib -F /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator -F /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks -F /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk/Developer/Library/Frameworks -parse-as-library -c -j3 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/runner/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator18.5-22F76-96ae0914227b19deccb34b33ba7b5dea.sdkstatcache -output-file-map /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/Objects-normal/arm64/SnoreLogTests-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/Objects-normal/arm64/SnoreLogTests.swiftmodule -validate-clang-modules-once -clang-build-session-file /Users/runner/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/Objects-normal/arm64/SnoreLogTests_const_extract_protocols.json -Xcc -iquote -Xcc /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/SnoreLogTests-generated-files.hmap -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/SnoreLogTests-own-target-headers.hmap -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/SnoreLogTests-all-target-headers.hmap -Xcc -iquote -Xcc /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/SnoreLogTests-project-headers.hmap -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/include -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/DerivedSources-normal/arm64 -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/DerivedSources/arm64 -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/Objects-normal/arm64/SnoreLogTests-Swift.h -working-directory /Users/runner/work/snorelog/snorelog -experimental-emit-module-separately -disable-cmo
+
+SwiftCompile normal arm64 Compiling\ NightScoringTests.swift /Users/runner/work/snorelog/snorelog/SnoreLogTests/NightScoringTests.swift (in target 'SnoreLogTests' from project 'SnoreLog')
+SwiftCompile normal arm64 /Users/runner/work/snorelog/snorelog/SnoreLogTests/NightScoringTests.swift (in target 'SnoreLogTests' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    
+
+SwiftEmitModule normal arm64 Emitting\ module\ for\ SnoreLogTests (in target 'SnoreLogTests' from project 'SnoreLog')
+
+SwiftCompile normal arm64 /Users/runner/work/snorelog/snorelog/SnoreLogTests/NightScoringTests.swift (in target 'SnoreLogTests' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    
+
+SwiftDriverJobDiscovery normal arm64 Compiling RecordingManifest.swift, SleepSession.swift, AnalysisService.swift, ContentView.swift, NightAnalyzer.swift, HistoryView.swift (in target 'SnoreLog' from project 'SnoreLog')
+
+SwiftDriverJobDiscovery normal arm64 Emitting module for SnoreLogTests (in target 'SnoreLogTests' from project 'SnoreLog')
+
+SwiftDriver\ Compilation\ Requirements SnoreLogTests normal arm64 com.apple.xcode.tools.swift.compiler (in target 'SnoreLogTests' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    builtin-Swift-Compilation-Requirements -- /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name SnoreLogTests -Onone -enforce-exclusivity\=checked @/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/Objects-normal/arm64/SnoreLogTests.SwiftFileList -DDEBUG -plugin-path /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk -target arm64-apple-ios17.0-simulator -g -module-cache-path /Users/runner/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Index.noindex/DataStore -swift-version 5 -I /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator -I /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib -F /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator -F /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks -F /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk/Developer/Library/Frameworks -parse-as-library -c -j3 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/runner/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator18.5-22F76-96ae0914227b19deccb34b33ba7b5dea.sdkstatcache -output-file-map /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/Objects-normal/arm64/SnoreLogTests-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/Objects-normal/arm64/SnoreLogTests.swiftmodule -validate-clang-modules-once -clang-build-session-file /Users/runner/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/Objects-normal/arm64/SnoreLogTests_const_extract_protocols.json -Xcc -iquote -Xcc /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/SnoreLogTests-generated-files.hmap -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/SnoreLogTests-own-target-headers.hmap -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/SnoreLogTests-all-target-headers.hmap -Xcc -iquote -Xcc /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/SnoreLogTests-project-headers.hmap -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/include -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/DerivedSources-normal/arm64 -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/DerivedSources/arm64 -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/Objects-normal/arm64/SnoreLogTests-Swift.h -working-directory /Users/runner/work/snorelog/snorelog -experimental-emit-module-separately -disable-cmo
+
+SwiftMergeGeneratedHeaders /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/DerivedSources/SnoreLogTests-Swift.h /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/Objects-normal/arm64/SnoreLogTests-Swift.h (in target 'SnoreLogTests' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    builtin-swiftHeaderTool -arch arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/Objects-normal/arm64/SnoreLogTests-Swift.h -o /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/DerivedSources/SnoreLogTests-Swift.h
+
+Copy /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLogTests.swiftmodule/arm64-apple-ios-simulator.swiftmodule /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/Objects-normal/arm64/SnoreLogTests.swiftmodule (in target 'SnoreLogTests' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/Objects-normal/arm64/SnoreLogTests.swiftmodule /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLogTests.swiftmodule/arm64-apple-ios-simulator.swiftmodule
+
+Copy /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLogTests.swiftmodule/arm64-apple-ios-simulator.swiftdoc /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/Objects-normal/arm64/SnoreLogTests.swiftdoc (in target 'SnoreLogTests' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/Objects-normal/arm64/SnoreLogTests.swiftdoc /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLogTests.swiftmodule/arm64-apple-ios-simulator.swiftdoc
+
+Copy /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLogTests.swiftmodule/arm64-apple-ios-simulator.abi.json /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/Objects-normal/arm64/SnoreLogTests.abi.json (in target 'SnoreLogTests' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/Objects-normal/arm64/SnoreLogTests.abi.json /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLogTests.swiftmodule/arm64-apple-ios-simulator.abi.json
+
+Copy /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLogTests.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/Objects-normal/arm64/SnoreLogTests.swiftsourceinfo (in target 'SnoreLogTests' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/Objects-normal/arm64/SnoreLogTests.swiftsourceinfo /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLogTests.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo
+
+SwiftDriverJobDiscovery normal arm64 Compiling DemoData.swift, SettingsView.swift, SnoreLogApp.swift, TonightView.swift, ClipPlayer.swift, NightRecorder.swift (in target 'SnoreLog' from project 'SnoreLog')
+
+SwiftDriver\ Compilation SnoreLog normal arm64 com.apple.xcode.tools.swift.compiler (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    builtin-Swift-Compilation -- /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name SnoreLog -Onone -enforce-exclusivity\=checked @/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64/SnoreLog.SwiftFileList -DDEBUG -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk -target arm64-apple-ios17.0-simulator -g -module-cache-path /Users/runner/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Index.noindex/DataStore -swift-version 5 -I /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator -F /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator -emit-localized-strings -emit-localized-strings-path /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64 -c -j3 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/runner/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator18.5-22F76-96ae0914227b19deccb34b33ba7b5dea.sdkstatcache -output-file-map /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64/SnoreLog-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64/SnoreLog.swiftmodule -validate-clang-modules-once -clang-build-session-file /Users/runner/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64/SnoreLog_const_extract_protocols.json -Xcc -iquote -Xcc /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/SnoreLog-generated-files.hmap -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/SnoreLog-own-target-headers.hmap -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/SnoreLog-all-target-headers.hmap -Xcc -iquote -Xcc /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/SnoreLog-project-headers.hmap -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/include -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/DerivedSources-normal/arm64 -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/DerivedSources/arm64 -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64/SnoreLog-Swift.h -working-directory /Users/runner/work/snorelog/snorelog -experimental-emit-module-separately -disable-cmo
+
+Ld /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/SnoreLog.debug.dylib normal (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios17.0-simulator -dynamiclib -isysroot /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk -O0 -L/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -L/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator -F/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -F/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator -filelist /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64/SnoreLog.LinkFileList -install_name @rpath/SnoreLog.debug.dylib -Xlinker -rpath -Xlinker @executable_path/Frameworks -dead_strip -Xlinker -object_path_lto -Xlinker /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64/SnoreLog_lto.o -rdynamic -Xlinker -no_deduplicate -Xlinker -objc_abi_version -Xlinker 2 -Xlinker -dependency_info -Xlinker /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64/SnoreLog_dependency_info.dat -fobjc-link-runtime -L/Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator -L/usr/lib/swift -Xlinker -add_ast_path -Xlinker /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64/SnoreLog.swiftmodule -Xlinker -alias -Xlinker _main -Xlinker ___debug_main_executable_dylib_entry_point -o /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/SnoreLog.debug.dylib
+
+ConstructStubExecutorLinkFileList /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/SnoreLog-ExecutorLinkFileList-normal-arm64.txt (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    construct-stub-executor-link-file-list /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/SnoreLog.debug.dylib /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libPreviewsJITStubExecutor_no_swift_entry_point.a /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libPreviewsJITStubExecutor.a --output /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/SnoreLog-ExecutorLinkFileList-normal-arm64.txt
+note: Using stub executor library with Swift entry point. (in target 'SnoreLog' from project 'SnoreLog')
+
+Ld /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/SnoreLog normal (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios17.0-simulator -isysroot /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk -O0 -L/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator -F/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator -Xlinker -rpath -Xlinker @executable_path -Xlinker -rpath -Xlinker @executable_path/Frameworks -rdynamic -Xlinker -no_deduplicate -Xlinker -objc_abi_version -Xlinker 2 -e ___debug_blank_executor_main -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __debug_dylib -Xlinker /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/SnoreLog-DebugDylibPath-normal-arm64.txt -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __debug_instlnm -Xlinker /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/SnoreLog-DebugDylibInstallName-normal-arm64.txt -Xlinker -filelist -Xlinker /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/SnoreLog-ExecutorLinkFileList-normal-arm64.txt /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/SnoreLog.debug.dylib -o /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/SnoreLog
+
+ExtractAppIntentsMetadata (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsmetadataprocessor --toolchain-dir /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --module-name SnoreLog --sdk-root /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk --xcode-version 16F6 --platform-family iOS --deployment-target 17.0 --bundle-identifier com.example.snorelog --output /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app --target-triple arm64-apple-ios17.0-simulator --binary-file /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/SnoreLog --dependency-file /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64/SnoreLog_dependency_info.dat --stringsdata-file /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64/ExtractedAppShortcutsMetadata.stringsdata --source-file-list /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64/SnoreLog.SwiftFileList --metadata-file-list /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/SnoreLog.DependencyMetadataFileList --static-metadata-file-list /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/SnoreLog.DependencyStaticMetadataFileList --swift-const-vals-list /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/Objects-normal/arm64/SnoreLog.SwiftConstValuesFileList --compile-time-extraction --deployment-aware-processing --validate-assistant-intents --no-app-shortcuts-localization
+2026-11-24 01:09:46.494 appintentsmetadataprocessor[2487:11117] Starting appintentsmetadataprocessor export
+2026-11-24 01:09:46.507 appintentsmetadataprocessor[2487:11117] warning: Metadata extraction skipped. No AppIntents.framework dependency found.
+
+CopySwiftLibs /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    builtin-swiftStdLibTool --copy --verbose --scan-executable /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/SnoreLog.debug.dylib --scan-folder /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/Frameworks --scan-folder /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/PlugIns --scan-folder /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/SystemExtensions --scan-folder /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/Extensions --platform iphonesimulator --toolchain /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --destination /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/Frameworks --strip-bitcode --strip-bitcode-tool /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip --emit-dependency-info /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/SwiftStdLibToolInputDependencies.dep --filter-for-swift-os
+Ignoring --strip-bitcode because --sign was not passed
+
+AppIntentsSSUTraining (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsnltrainingprocessor --infoplist-path /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/Info.plist --temp-dir-path /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/ssu --bundle-id com.example.snorelog --product-path /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app --extracted-metadata-path /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/Metadata.appintents --metadata-file-list /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLog.build/SnoreLog.DependencyMetadataFileList --archive-ssu-assets
+2026-11-24 01:09:46.555 appintentsnltrainingprocessor[2490:11128] Parsing options for appintentsnltrainingprocessor
+2026-11-24 01:09:46.557 appintentsnltrainingprocessor[2490:11128] No AppShortcuts found - Skipping.
+
+ProcessInfoPlistFile /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/PlugIns/SnoreLogTests.xctest/Info.plist /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/empty-SnoreLogTests.plist (in target 'SnoreLogTests' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    builtin-infoPlistUtility /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/empty-SnoreLogTests.plist -producttype com.apple.product-type.bundle.unit-test -expandbuildsettings -format binary -platform iphonesimulator -o /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/PlugIns/SnoreLogTests.xctest/Info.plist
+
+SwiftDriverJobDiscovery normal arm64 Compiling NightScoringTests.swift (in target 'SnoreLogTests' from project 'SnoreLog')
+
+SwiftDriver\ Compilation SnoreLogTests normal arm64 com.apple.xcode.tools.swift.compiler (in target 'SnoreLogTests' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    builtin-Swift-Compilation -- /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name SnoreLogTests -Onone -enforce-exclusivity\=checked @/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/Objects-normal/arm64/SnoreLogTests.SwiftFileList -DDEBUG -plugin-path /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk -target arm64-apple-ios17.0-simulator -g -module-cache-path /Users/runner/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Index.noindex/DataStore -swift-version 5 -I /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator -I /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib -F /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator -F /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks -F /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk/Developer/Library/Frameworks -parse-as-library -c -j3 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/runner/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator18.5-22F76-96ae0914227b19deccb34b33ba7b5dea.sdkstatcache -output-file-map /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/Objects-normal/arm64/SnoreLogTests-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/Objects-normal/arm64/SnoreLogTests.swiftmodule -validate-clang-modules-once -clang-build-session-file /Users/runner/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/Objects-normal/arm64/SnoreLogTests_const_extract_protocols.json -Xcc -iquote -Xcc /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/SnoreLogTests-generated-files.hmap -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/SnoreLogTests-own-target-headers.hmap -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/SnoreLogTests-all-target-headers.hmap -Xcc -iquote -Xcc /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/SnoreLogTests-project-headers.hmap -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/include -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/DerivedSources-normal/arm64 -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/DerivedSources/arm64 -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/Objects-normal/arm64/SnoreLogTests-Swift.h -working-directory /Users/runner/work/snorelog/snorelog -experimental-emit-module-separately -disable-cmo
+
+Ld /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/PlugIns/SnoreLogTests.xctest/SnoreLogTests normal (in target 'SnoreLogTests' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios17.0-simulator -bundle -isysroot /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk -O0 -L/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -L/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator -L/Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib -F/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -F/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator -iframework /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks -iframework /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk/Developer/Library/Frameworks -filelist /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/Objects-normal/arm64/SnoreLogTests.LinkFileList -Xlinker -rpath -Xlinker @loader_path/Frameworks -Xlinker -rpath -Xlinker @executable_path/Frameworks -dead_strip -bundle_loader /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/SnoreLog -Xlinker -object_path_lto -Xlinker /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/Objects-normal/arm64/SnoreLogTests_lto.o -rdynamic -Xlinker -no_deduplicate -Xlinker -objc_abi_version -Xlinker 2 -Xlinker -dependency_info -Xlinker /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/Objects-normal/arm64/SnoreLogTests_dependency_info.dat -fobjc-link-runtime -L/Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator -L/usr/lib/swift -Xlinker -add_ast_path -Xlinker /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/Objects-normal/arm64/SnoreLogTests.swiftmodule -framework XCTest -lXCTestSwiftSupport /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/SnoreLog.debug.dylib -o /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/PlugIns/SnoreLogTests.xctest/SnoreLogTests
+
+ExtractAppIntentsMetadata (in target 'SnoreLogTests' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsmetadataprocessor --toolchain-dir /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --module-name SnoreLogTests --sdk-root /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk --xcode-version 16F6 --platform-family iOS --deployment-target 17.0 --bundle-identifier com.example.snorelog.tests --output /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/PlugIns/SnoreLogTests.xctest --target-triple arm64-apple-ios17.0-simulator --binary-file /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/PlugIns/SnoreLogTests.xctest/SnoreLogTests --dependency-file /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/Objects-normal/arm64/SnoreLogTests_dependency_info.dat --stringsdata-file /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/Objects-normal/arm64/ExtractedAppShortcutsMetadata.stringsdata --source-file-list /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/Objects-normal/arm64/SnoreLogTests.SwiftFileList --metadata-file-list /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/SnoreLogTests.DependencyMetadataFileList --static-metadata-file-list /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/SnoreLogTests.DependencyStaticMetadataFileList --swift-const-vals-list /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/Objects-normal/arm64/SnoreLogTests.SwiftConstValuesFileList --compile-time-extraction --deployment-aware-processing --validate-assistant-intents --no-app-shortcuts-localization
+2026-11-24 01:09:47.657 appintentsmetadataprocessor[2495:11159] Starting appintentsmetadataprocessor export
+2026-11-24 01:09:47.670 appintentsmetadataprocessor[2495:11159] warning: Metadata extraction skipped. No AppIntents.framework dependency found.
+
+CopySwiftLibs /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/PlugIns/SnoreLogTests.xctest (in target 'SnoreLogTests' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    builtin-swiftStdLibTool --copy --verbose --scan-executable /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/PlugIns/SnoreLogTests.xctest/SnoreLogTests --scan-folder /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/PlugIns/SnoreLogTests.xctest/Frameworks --scan-folder /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/PlugIns/SnoreLogTests.xctest/PlugIns --scan-folder /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/PlugIns/SnoreLogTests.xctest/SystemExtensions --scan-folder /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/PlugIns/SnoreLogTests.xctest/Extensions --platform iphonesimulator --toolchain /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --destination /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/PlugIns/SnoreLogTests.xctest/Frameworks --strip-bitcode --scan-executable /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libXCTestSwiftSupport.dylib --strip-bitcode-tool /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip --emit-dependency-info /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/SwiftStdLibToolInputDependencies.dep --filter-for-swift-os
+Ignoring --strip-bitcode because --sign was not passed
+
+AppIntentsSSUTraining (in target 'SnoreLogTests' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsnltrainingprocessor --infoplist-path /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/PlugIns/SnoreLogTests.xctest/Info.plist --temp-dir-path /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/ssu --bundle-id com.example.snorelog.tests --product-path /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/PlugIns/SnoreLogTests.xctest --extracted-metadata-path /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/PlugIns/SnoreLogTests.xctest/Metadata.appintents --metadata-file-list /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Intermediates.noindex/SnoreLog.build/Debug-iphonesimulator/SnoreLogTests.build/SnoreLogTests.DependencyMetadataFileList --archive-ssu-assets
+2026-11-24 01:09:47.710 appintentsnltrainingprocessor[2496:11160] Parsing options for appintentsnltrainingprocessor
+2026-11-24 01:09:47.711 appintentsnltrainingprocessor[2496:11160] No AppShortcuts found - Skipping.
+
+RegisterExecutionPolicyException /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/PlugIns/SnoreLogTests.xctest (in target 'SnoreLogTests' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    builtin-RegisterExecutionPolicyException /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/PlugIns/SnoreLogTests.xctest
+
+Touch /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/PlugIns/SnoreLogTests.xctest (in target 'SnoreLogTests' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    /usr/bin/touch -c /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app/PlugIns/SnoreLogTests.xctest
+
+RegisterExecutionPolicyException /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    builtin-RegisterExecutionPolicyException /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app
+
+Validate /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    builtin-validationUtility /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app -infoplist-subpath Info.plist
+
+Touch /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app (in target 'SnoreLog' from project 'SnoreLog')
+    cd /Users/runner/work/snorelog/snorelog
+    /usr/bin/touch -c /Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Build/Products/Debug-iphonesimulator/SnoreLog.app
+
+2026-11-24 01:18:00.983301+0000 SnoreLog[18307:53420] [error] CoreData: error: Failed to stat path '/Users/runner/Library/Developer/CoreSimulator/Devices/87C401A1-6137-4CF6-8AAC-E12E171B64D7/data/Containers/Data/Application/A2BD8155-65EC-40C8-A37E-94F5328AC096/Library/Application Support/default.store', errno 2 / No such file or directory.
+CoreData: error: Failed to stat path '/Users/runner/Library/Developer/CoreSimulator/Devices/87C401A1-6137-4CF6-8AAC-E12E171B64D7/data/Containers/Data/Application/A2BD8155-65EC-40C8-A37E-94F5328AC096/Library/Application Support/default.store', errno 2 / No such file or directory.
+2026-11-24 01:18:00.983591+0000 SnoreLog[18307:53420] [error] CoreData: error: Executing as effective user 501
+CoreData: error: Executing as effective user 501
+2026-11-24 01:18:00.983705+0000 SnoreLog[18307:53420] [error] CoreData: error: Failed to statfs file; errno 2 / No such file or directory.
+CoreData: error: Failed to statfs file; errno 2 / No such file or directory.
+2026-11-24 01:18:00.983772+0000 SnoreLog[18307:53420] [error] CoreData: error: Logging status information for directory path: /Users/runner/Library/Developer/CoreSimulator/Devices/87C401A1-6137-4CF6-8AAC-E12E171B64D7/data/Containers/Data/Application/A2BD8155-65EC-40C8-A37E-94F5328AC096/Library/Application Support
+CoreData: error: Logging status information for directory path: /Users/runner/Library/Developer/CoreSimulator/Devices/87C401A1-6137-4CF6-8AAC-E12E171B64D7/data/Containers/Data/Application/A2BD8155-65EC-40C8-A37E-94F5328AC096/Library/Application Support
+2026-11-24 01:18:00.984255+0000 SnoreLog[18307:53420] [error] CoreData: error: Executing as effective user 501
+CoreData: error: Executing as effective user 501
+2026-11-24 01:18:00.984334+0000 SnoreLog[18307:53420] [error] CoreData: error: Information for /
+CoreData: error: Information for /
+2026-11-24 01:18:00.984384+0000 SnoreLog[18307:53420] [error] CoreData: error:   File Device ID: 	0
+CoreData: error:   File Device ID: 	0
+2026-11-24 01:18:00.984423+0000 SnoreLog[18307:53420] [error] CoreData: error:   Device ID: 		16777228
+CoreData: error:   Device ID: 		16777228
+2026-11-24 01:18:00.984476+0000 SnoreLog[18307:53420] [error] CoreData: error:   File Size: 		704 bytes
+CoreData: error:   File Size: 		704 bytes
+2026-11-24 01:18:00.984674+0000 SnoreLog[18307:53420] [error] CoreData: error:   File inode: 		2
+CoreData: error:   File inode: 		2
+2026-11-24 01:18:00.984885+0000 SnoreLog[18307:53420] [error] CoreData: error:   File user ID: 		0
+CoreData: error:   File user ID: 		0
+2026-11-24 01:18:00.985261+0000 SnoreLog[18307:53420] [error] CoreData: error:   File group ID: 		0
+CoreData: error:   File group ID: 		0
+2026-11-24 01:18:00.985396+0000 SnoreLog[18307:53420] [error] CoreData: error:   File Permissions:
+CoreData: error:   File Permissions: 	
+2026-11-24 01:18:00.985548+0000 SnoreLog[18307:53420] [error] CoreData: error: d
+CoreData: error: d
+2026-11-24 01:18:00.985773+0000 SnoreLog[18307:53420] [error] CoreData: error:   755
+CoreData: error:   755
+2026-11-24 01:18:00.989680+0000 SnoreLog[18307:53420] [error] CoreData: error:   component is not a symbolic link
+CoreData: error:   component is not a symbolic link
+2026-11-24 01:18:00.989826+0000 SnoreLog[18307:53420] [error] CoreData: error:   component is readable
+CoreData: error:   component is readable
+2026-11-24 01:18:00.989929+0000 SnoreLog[18307:53420] [error] CoreData: error:   component is not writeable with errno 30
+CoreData: error:   component is not writeable with errno 30
+2026-11-24 01:18:00.990111+0000 SnoreLog[18307:53420] [error] CoreData: error: Information for /Users
+CoreData: error: Information for /Users
+2026-11-24 01:18:00.990179+0000 SnoreLog[18307:53420] [error] CoreData: error:   File Device ID: 	0
+CoreData: error:   File Device ID: 	0
+2026-11-24 01:18:00.990226+0000 SnoreLog[18307:53420] [error] CoreData: error:   Device ID: 		16777228
+CoreData: error:   Device ID: 		16777228
+2026-11-24 01:18:00.990265+0000 SnoreLog[18307:53420] [error] CoreData: error:   File Size: 		160 bytes
+CoreData: error:   File Size: 		160 bytes
+2026-11-24 01:18:01.019678+0000 SnoreLog[18307:53420] [error] CoreData: error:   File inode: 		17196
+CoreData: error:   File inode: 		17196
+2026-11-24 01:18:01.019917+0000 SnoreLog[18307:53420] [error] CoreData: error:   File user ID: 		0
+CoreData: error:   File user ID: 		0
+2026-11-24 01:18:01.020042+0000 SnoreLog[18307:53420] [error] CoreData: error:   File group ID: 		80
+CoreData: error:   File group ID: 		80
+2026-11-24 01:18:01.020112+0000 SnoreLog[18307:53420] [error] CoreData: error:   File Permissions:
+CoreData: error:   File Permissions: 	
+2026-11-24 01:18:01.020156+0000 SnoreLog[18307:53420] [error] CoreData: error: d
+CoreData: error: d
+2026-11-24 01:18:01.020203+0000 SnoreLog[18307:53420] [error] CoreData: error:   755
+CoreData: error:   755
+2026-11-24 01:18:01.020243+0000 SnoreLog[18307:53420] [error] CoreData: error:   component is not a symbolic link
+CoreData: error:   component is not a symbolic link
+2026-11-24 01:18:01.020328+0000 SnoreLog[18307:53420] [error] CoreData: error:   component is readable
+CoreData: error:   component is readable
+2026-11-24 01:18:01.021012+0000 SnoreLog[18307:53420] [error] CoreData: error:   component is not writeable with errno 13
+CoreData: error:   component is not writeable with errno 13
+2026-11-24 01:18:01.021124+0000 SnoreLog[18307:53420] [error] CoreData: error: Information for /Users/runner
+CoreData: error: Information for /Users/runner
+2026-11-24 01:18:01.021181+0000 SnoreLog[18307:53420] [error] CoreData: error:   File Device ID: 	0
+CoreData: error:   File Device ID: 	0
+2026-11-24 01:18:01.021250+0000 SnoreLog[18307:53420] [error] CoreData: error:   Device ID: 		16777228
+CoreData: error:   Device ID: 		16777228
+2026-11-24 01:18:01.021295+0000 SnoreLog[18307:53420] [error] CoreData: error:   File Size: 		1280 bytes
+CoreData: error:   File Size: 		1280 bytes
+2026-11-24 01:18:01.021338+0000 SnoreLog[18307:53420] [error] CoreData: error:   File inode: 		28138
+CoreData: error:   File inode: 		28138
+2026-11-24 01:18:01.021412+0000 SnoreLog[18307:53420] [error] CoreData: error:   File user ID: 		501
+CoreData: error:   File user ID: 		501
+2026-11-24 01:18:01.022179+0000 SnoreLog[18307:53420] [error] CoreData: error:   File group ID: 		20
+CoreData: error:   File group ID: 		20
+2026-11-24 01:18:01.022232+0000 SnoreLog[18307:53420] [error] CoreData: error:   File Permissions:
+CoreData: error:   File Permissions: 	
+2026-11-24 01:18:01.022270+0000 SnoreLog[18307:53420] [error] CoreData: error: d
+CoreData: error: d
+2026-11-24 01:18:01.022344+0000 SnoreLog[18307:53420] [error] CoreData: error:   750
+CoreData: error:   750
+2026-11-24 01:18:01.022390+0000 SnoreLog[18307:53420] [error] CoreData: error:   component is not a symbolic link
+CoreData: error:   component is not a symbolic link
+2026-11-24 01:18:01.022465+0000 SnoreLog[18307:53420] [error] CoreData: error:   component is readable
+CoreData: error:   component is readable
+2026-11-24 01:18:01.022519+0000 SnoreLog[18307:53420] [error] CoreData: error:   component is writeable
+CoreData: error:   component is writeable
+2026-11-24 01:18:01.022692+0000 SnoreLog[18307:53420] [error] CoreData: error: Information for /Users/runner/Library
+CoreData: error: Information for /Users/runner/Library
+2026-11-24 01:18:01.022846+0000 SnoreLog[18307:53420] [error] CoreData: error:   File Device ID: 	0
+CoreData: error:   File Device ID: 	0
+2026-11-24 01:18:01.022967+0000 SnoreLog[18307:53420] [error] CoreData: error:   Device ID: 		16777228
+CoreData: error:   Device ID: 		16777228
+2026-11-24 01:18:01.023046+0000 SnoreLog[18307:53420] [error] CoreData: error:   File Size: 		2688 bytes
+CoreData: error:   File Size: 		2688 bytes
+2026-11-24 01:18:01.023093+0000 SnoreLog[18307:53420] [error] CoreData: error:   File inode: 		28145
+CoreData: error:   File inode: 		28145
+2026-11-24 01:18:01.023136+0000 SnoreLog[18307:53420] [error] CoreData: error:   File user ID: 		501
+CoreData: error:   File user ID: 		501
+2026-11-24 01:18:01.023176+0000 SnoreLog[18307:53420] [error] CoreData: error:   File group ID: 		20
+CoreData: error:   File group ID: 		20
+2026-11-24 01:18:01.023218+0000 SnoreLog[18307:53420] [error] CoreData: error:   File Permissions:
+CoreData: error:   File Permissions: 	
+2026-11-24 01:18:01.023259+0000 SnoreLog[18307:53420] [error] CoreData: error: d
+CoreData: error: d
+2026-11-24 01:18:01.023300+0000 SnoreLog[18307:53420] [error] CoreData: error:   700
+CoreData: error:   700
+2026-11-24 01:18:01.023392+0000 SnoreLog[18307:53420] [error] CoreData: error:   component is not a symbolic link
+CoreData: error:   component is not a symbolic link
+2026-11-24 01:18:01.023546+0000 SnoreLog[18307:53420] [error] CoreData: error:   component is readable
+CoreData: error:   component is readable
+2026-11-24 01:18:01.023697+0000 SnoreLog[18307:53420] [error] CoreData: error:   component is writeable
+CoreData: error:   component is writeable
+2026-11-24 01:18:01.023852+0000 SnoreLog[18307:53420] [error] CoreData: error: Information for /Users/runner/Library/Developer
+CoreData: error: Information for /Users/runner/Library/Developer
+2026-11-24 01:18:01.024002+0000 SnoreLog[18307:53420] [error] CoreData: error:   File Device ID: 	0
+CoreData: error:   File Device ID: 	0
+2026-11-24 01:18:01.024196+0000 SnoreLog[18307:53420] [error] CoreData: error:   Device ID: 		16777228
+CoreData: error:   Device ID: 		16777228
+2026-11-24 01:18:01.024346+0000 SnoreLog[18307:53420] [error] CoreData: error:   File Size: 		160 bytes
+CoreData: error:   File Size: 		160 bytes
+2026-11-24 01:18:01.024541+0000 SnoreLog[18307:53420] [error] CoreData: error:   File inode: 		2775162
+CoreData: error:   File inode: 		2775162
+2026-11-24 01:18:01.024717+0000 SnoreLog[18307:53420] [error] CoreData: error:   File user ID: 		501
+CoreData: error:   File user ID: 		501
+2026-11-24 01:18:01.024886+0000 SnoreLog[18307:53420] [error] CoreData: error:   File group ID: 		20
+CoreData: error:   File group ID: 		20
+2026-11-24 01:18:01.025051+0000 SnoreLog[18307:53420] [error] CoreData: error:   File Permissions:
+CoreData: error:   File Permissions: 	
+2026-11-24 01:18:01.025196+0000 SnoreLog[18307:53420] [error] CoreData: error: d
+CoreData: error: d
+2026-11-24 01:18:01.025356+0000 SnoreLog[18307:53420] [error] CoreData: error:   755
+CoreData: error:   755
+2026-11-24 01:18:01.026527+0000 SnoreLog[18307:53420] [error] CoreData: error:   component is not a symbolic link
+CoreData: error:   component is not a symbolic link
+2026-11-24 01:18:01.026672+0000 SnoreLog[18307:53420] [error] CoreData: error:   component is readable
+CoreData: error:   component is readable
+2026-11-24 01:18:01.026740+0000 SnoreLog[18307:53420] [error] CoreData: error:   component is writeable
+CoreData: error:   component is writeable
+2026-11-24 01:18:01.026798+0000 SnoreLog[18307:53420] [error] CoreData: error: Information for /Users/runner/Library/Developer/CoreSimulator
+CoreData: error: Information for /Users/runner/Library/Developer/CoreSimulator
+2026-11-24 01:18:01.026841+0000 SnoreLog[18307:53420] [error] CoreData: error:   File Device ID: 	0
+CoreData: error:   File Device ID: 	0
+2026-11-24 01:18:01.026883+0000 SnoreLog[18307:53420] [error] CoreData: error:   Device ID: 		16777228
+CoreData: error:   Device ID: 		16777228
+2026-11-24 01:18:01.027521+0000 SnoreLog[18307:53420] [error] CoreData: error:   File Size: 		160 bytes
+CoreData: error:   File Size: 		160 bytes
+2026-11-24 01:18:01.027629+0000 SnoreLog[18307:53420] [error] CoreData: error:   File inode: 		2775169
+CoreData: error:   File inode: 		2775169
+2026-11-24 01:18:01.027668+0000 SnoreLog[18307:53420] [error] CoreData: error:   File user ID: 		501
+CoreData: error:   File user ID: 		501
+2026-11-24 01:18:01.027712+0000 SnoreLog[18307:53420] [error] CoreData: error:   File group ID: 		20
+CoreData: error:   File group ID: 		20
+2026-11-24 01:18:01.027757+0000 SnoreLog[18307:53420] [error] CoreData: error:   File Permissions:
+CoreData: error:   File Permissions: 	
+2026-11-24 01:18:01.027793+0000 SnoreLog[18307:53420] [error] CoreData: error: d
+CoreData: error: d
+2026-11-24 01:18:01.027835+0000 SnoreLog[18307:53420] [error] CoreData: error:   755
+CoreData: error:   755
+2026-11-24 01:18:01.027881+0000 SnoreLog[18307:53420] [error] CoreData: error:   component is not a symbolic link
+CoreData: error:   component is not a symbolic link
+2026-11-24 01:18:01.028089+0000 SnoreLog[18307:53420] [error] CoreData: error:   component is readable
+CoreData: error:   component is readable
+2026-11-24 01:18:01.028149+0000 SnoreLog[18307:53420] [error] CoreData: error:   component is writeable
+CoreData: error:   component is writeable
+2026-11-24 01:18:01.028205+0000 SnoreLog[18307:53420] [error] CoreData: error: Information for /Users/runner/Library/Developer/CoreSimulator/Devices
+CoreData: error: Information for /Users/runner/Library/Developer/CoreSimulator/Devices
+2026-11-24 01:18:01.028349+0000 SnoreLog[18307:53420] [error] CoreData: error:   File Device ID: 	0
+CoreData: error:   File Device ID: 	0
+2026-11-24 01:18:01.028522+0000 SnoreLog[18307:53420] [error] CoreData: error:   Device ID: 		16777228
+CoreData: error:   Device ID: 		16777228
+2026-11-24 01:18:01.028670+0000 SnoreLog[18307:53420] [error] CoreData: error:   File Size: 		4320 bytes
+CoreData: error:   File Size: 		4320 bytes
+2026-11-24 01:18:01.028825+0000 SnoreLog[18307:53420] [error] CoreData: error:   File inode: 		2775201
+CoreData: error:   File inode: 		2775201
+2026-11-24 01:18:01.028973+0000 SnoreLog[18307:53420] [error] CoreData: error:   File user ID: 		501
+CoreData: error:   File user ID: 		501
+2026-11-24 01:18:01.029124+0000 SnoreLog[18307:53420] [error] CoreData: error:   File group ID: 		20
+CoreData: error:   File group ID: 		20
+2026-11-24 01:18:01.029299+0000 SnoreLog[18307:53420] [error] CoreData: error:   File Permissions:
+CoreData: error:   File Permissions: 	
+2026-11-24 01:18:01.029425+0000 SnoreLog[18307:53420] [error] CoreData: error: d
+CoreData: error: d
+2026-11-24 01:18:01.029487+0000 SnoreLog[18307:53420] [error] CoreData: error:   755
+CoreData: error:   755
+2026-11-24 01:18:01.029547+0000 SnoreLog[18307:53420] [error] CoreData: error:   component is not a symbolic link
+CoreData: error:   component is not a symbolic link
+2026-11-24 01:18:01.029645+0000 SnoreLog[18307:53420] [error] CoreData: error:   component is readable
+CoreData: error:   component is readable
+2026-11-24 01:18:01.029697+0000 SnoreLog[18307:53420] [error] CoreData: error:   component is writeable
+CoreData: error:   component is writeable
+2026-11-24 01:18:01.029756+0000 SnoreLog[18307:53420] [error] CoreData: error: Information for /Users/runner/Library/Developer/CoreSimulator/Devices/87C401A1-6137-4CF6-8AAC-E12E171B64D7
+CoreData: error: Information for /Users/runner/Library/Developer/CoreSimulator/Devices/87C401A1-6137-4CF6-8AAC-E12E171B64D7
+2026-11-24 01:18:01.030098+0000 SnoreLog[18307:53420] [error] CoreData: error:   File Device ID: 	0
+CoreData: error:   File Device ID: 	0
+2026-11-24 01:18:01.030145+0000 SnoreLog[18307:53420] [error] CoreData: error:   Device ID: 		16777228
+CoreData: error:   Device ID: 		16777228
+2026-11-24 01:18:01.030183+0000 SnoreLog[18307:53420] [error] CoreData: error:   File Size: 		160 bytes
+CoreData: error:   File Size: 		160 bytes
+2026-11-24 01:18:01.030220+0000 SnoreLog[18307:53420] [error] CoreData: error:   File inode: 		3483390
+CoreData: error:   File inode: 		3483390
+2026-11-24 01:18:01.030257+0000 SnoreLog[18307:53420] [error] CoreData: error:   File user ID: 		501
+CoreData: error:   File user ID: 		501
+2026-11-24 01:18:01.030293+0000 SnoreLog[18307:53420] [error] CoreData: error:   File group ID: 		20
+CoreData: error:   File group ID: 		20
+2026-11-24 01:18:01.030328+0000 SnoreLog[18307:53420] [error] CoreData: error:   File Permissions:
+CoreData: error:   File Permissions: 	
+2026-11-24 01:18:01.030637+0000 SnoreLog[18307:53420] [error] CoreData: error: d
+CoreData: error: d
+2026-11-24 01:18:01.030694+0000 SnoreLog[18307:53420] [error] CoreData: error:   755
+CoreData: error:   755
+2026-11-24 01:18:01.030733+0000 SnoreLog[18307:53420] [error] CoreData: error:   component is not a symbolic link
+CoreData: error:   component is not a symbolic link
+2026-11-24 01:18:01.030875+0000 SnoreLog[18307:53420] [error] CoreData: error:   component is readable
+CoreData: error:   component is readable
+2026-11-24 01:18:01.030931+0000 SnoreLog[18307:53420] [error] CoreData: error:   component is writeable
+CoreData: error:   component is writeable
+2026-11-24 01:18:01.030983+0000 SnoreLog[18307:53420] [error] CoreData: error: Information for /Users/runner/Library/Developer/CoreSimulator/Devices/87C401A1-6137-4CF6-8AAC-E12E171B64D7/data
+CoreData: error: Information for /Users/runner/Library/Developer/CoreSimulator/Devices/87C401A1-6137-4CF6-8AAC-E12E171B64D7/data
+2026-11-24 01:18:01.031243+0000 SnoreLog[18307:53420] [error] CoreData: error:   File Device ID: 	0
+CoreData: error:   File Device ID: 	0
+2026-11-24 01:18:01.031295+0000 SnoreLog[18307:53420] [error] CoreData: error:   Device ID: 		16777228
+CoreData: error:   Device ID: 		16777228
+2026-11-24 01:18:01.031335+0000 SnoreLog[18307:53420] [error] CoreData: error:   File Size: 		384 bytes
+CoreData: error:   File Size: 		384 bytes
+2026-11-24 01:18:01.031373+0000 SnoreLog[18307:53420] [error] CoreData: error:   File inode: 		3483391
+CoreData: error:   File inode: 		3483391
+2026-11-24 01:18:01.031408+0000 SnoreLog[18307:53420] [error] CoreData: error:   File user ID: 		501
+CoreData: error:   File user ID: 		501
+2026-11-24 01:18:01.031444+0000 SnoreLog[18307:53420] [error] CoreData: error:   File group ID: 		20
+CoreData: error:   File group ID: 		20
+2026-11-24 01:18:01.031510+0000 SnoreLog[18307:53420] [error] CoreData: error:   File Permissions:
+CoreData: error:   File Permissions: 	
+2026-11-24 01:18:01.031678+0000 SnoreLog[18307:53420] [error] CoreData: error: d
+CoreData: error: d
+2026-11-24 01:18:01.031854+0000 SnoreLog[18307:53420] [error] CoreData: error:   775
+CoreData: error:   775
+2026-11-24 01:18:01.032028+0000 SnoreLog[18307:53420] [error] CoreData: error:   component is not a symbolic link
+CoreData: error:   component is not a symbolic link
+2026-11-24 01:18:01.032206+0000 SnoreLog[18307:53420] [error] CoreData: error:   component is readable
+CoreData: error:   component is readable
+2026-11-24 01:18:01.032647+0000 SnoreLog[18307:53420] [error] CoreData: error:   component is writeable
+CoreData: error:   component is writeable
+2026-11-24 01:18:01.032728+0000 SnoreLog[18307:53420] [error] CoreData: error: Information for /Users/runner/Library/Developer/CoreSimulator/Devices/87C401A1-6137-4CF6-8AAC-E12E171B64D7/data/Containers
+CoreData: error: Information for /Users/runner/Library/Developer/CoreSimulator/Devices/87C401A1-6137-4CF6-8AAC-E12E171B64D7/data/Containers
+2026-11-24 01:18:01.032781+0000 SnoreLog[18307:53420] [error] CoreData: error:   File Device ID: 	0
+CoreData: error:   File Device ID: 	0
+2026-11-24 01:18:01.032903+0000 SnoreLog[18307:53420] [error] CoreData: error:   Device ID: 		16777228
+CoreData: error:   Device ID: 		16777228
+2026-11-24 01:18:01.033361+0000 SnoreLog[18307:53420] [error] CoreData: error:   File Size: 		224 bytes
+CoreData: error:   File Size: 		224 bytes
+2026-11-24 01:18:01.033410+0000 SnoreLog[18307:53420] [error] CoreData: error:   File inode: 		3575445
+CoreData: error:   File inode: 		3575445
+2026-11-24 01:18:01.033446+0000 SnoreLog[18307:53420] [error] CoreData: error:   File user ID: 		501
+CoreData: error:   File user ID: 		501
+2026-11-24 01:18:01.033482+0000 SnoreLog[18307:53420] [error] CoreData: error:   File group ID: 		20
+CoreData: error:   File group ID: 		20
+2026-11-24 01:18:01.033529+0000 SnoreLog[18307:53420] [error] CoreData: error:   File Permissions:
+CoreData: error:   File Permissions: 	
+2026-11-24 01:18:01.033567+0000 SnoreLog[18307:53420] [error] CoreData: error: d
+CoreData: error: d
+2026-11-24 01:18:01.033616+0000 SnoreLog[18307:53420] [error] CoreData: error:   755
+CoreData: error:   755
+2026-11-24 01:18:01.033651+0000 SnoreLog[18307:53420] [error] CoreData: error:   component is not a symbolic link
+CoreData: error:   component is not a symbolic link
+2026-11-24 01:18:01.033851+0000 SnoreLog[18307:53420] [error] CoreData: error:   component is readable
+CoreData: error:   component is readable
+2026-11-24 01:18:01.033912+0000 SnoreLog[18307:53420] [error] CoreData: error:   component is writeable
+CoreData: error:   component is writeable
+2026-11-24 01:18:01.033969+0000 SnoreLog[18307:53420] [error] CoreData: error: Information for /Users/runner/Library/Developer/CoreSimulator/Devices/87C401A1-6137-4CF6-8AAC-E12E171B64D7/data/Containers/Data
+CoreData: error: Information for /Users/runner/Library/Developer/CoreSimulator/Devices/87C401A1-6137-4CF6-8AAC-E12E171B64D7/data/Containers/Data
+2026-11-24 01:18:01.034150+0000 SnoreLog[18307:53420] [error] CoreData: error:   File Device ID: 	0
+CoreData: error:   File Device ID: 	0
+2026-11-24 01:18:01.034255+0000 SnoreLog[18307:53420] [error] CoreData: error:   Device ID: 		16777228
+CoreData: error:   Device ID: 		16777228
+2026-11-24 01:18:01.034312+0000 SnoreLog[18307:53420] [error] CoreData: error:   File Size: 		192 bytes
+CoreData: error:   File Size: 		192 bytes
+2026-11-24 01:18:01.035732+0000 SnoreLog[18307:53420] [error] CoreData: error:   File inode: 		3575471
+CoreData: error:   File inode: 		3575471
+2026-11-24 01:18:01.035790+0000 SnoreLog[18307:53420] [error] CoreData: error:   File user ID: 		501
+CoreData: error:   File user ID: 		501
+2026-11-24 01:18:01.035829+0000 SnoreLog[18307:53420] [error] CoreData: error:   File group ID: 		20
+CoreData: error:   File group ID: 		20
+2026-11-24 01:18:01.035872+0000 SnoreLog[18307:53420] [error] CoreData: error:   File Permissions:
+CoreData: error:   File Permissions: 	
+2026-11-24 01:18:01.035907+0000 SnoreLog[18307:53420] [error] CoreData: error: d
+CoreData: error: d
+2026-11-24 01:18:01.035943+0000 SnoreLog[18307:53420] [error] CoreData: error:   755
+CoreData: error:   755
+2026-11-24 01:18:01.036007+0000 SnoreLog[18307:53420] [error] CoreData: error:   component is not a symbolic link
+CoreData: error:   component is not a symbolic link
+2026-11-24 01:18:01.036140+0000 SnoreLog[18307:53420] [error] CoreData: error:   component is readable
+CoreData: error:   component is readable
+2026-11-24 01:18:01.036896+0000 SnoreLog[18307:53420] [error] CoreData: error:   component is writeable
+CoreData: error:   component is writeable
+2026-11-24 01:18:01.036960+0000 SnoreLog[18307:53420] [error] CoreData: error: Information for /Users/runner/Library/Developer/CoreSimulator/Devices/87C401A1-6137-4CF6-8AAC-E12E171B64D7/data/Containers/Data/Application
+CoreData: error: Information for /Users/runner/Library/Developer/CoreSimulator/Devices/87C401A1-6137-4CF6-8AAC-E12E171B64D7/data/Containers/Data/Application
+2026-11-24 01:18:01.037002+0000 SnoreLog[18307:53420] [error] CoreData: error:   File Device ID: 	0
+CoreData: error:   File Device ID: 	0
+2026-11-24 01:18:01.037038+0000 SnoreLog[18307:53420] [error] CoreData: error:   Device ID: 		16777228
+CoreData: error:   Device ID: 		16777228
+2026-11-24 01:18:01.037076+0000 SnoreLog[18307:53420] [error] CoreData: error:   File Size: 		4640 bytes
+CoreData: error:   File Size: 		4640 bytes
+2026-11-24 01:18:01.037397+0000 SnoreLog[18307:53420] [error] CoreData: error:   File inode: 		3575642
+CoreData: error:   File inode: 		3575642
+2026-11-24 01:18:01.037445+0000 SnoreLog[18307:53420] [error] CoreData: error:   File user ID: 		501
+CoreData: error:   File user ID: 		501
+2026-11-24 01:18:01.037482+0000 SnoreLog[18307:53420] [error] CoreData: error:   File group ID: 		20
+CoreData: error:   File group ID: 		20
+2026-11-24 01:18:01.037541+0000 SnoreLog[18307:53420] [error] CoreData: error:   File Permissions:
+CoreData: error:   File Permissions: 	
+2026-11-24 01:18:01.037595+0000 SnoreLog[18307:53420] [error] CoreData: error: d
+CoreData: error: d
+2026-11-24 01:18:01.037644+0000 SnoreLog[18307:53420] [error] CoreData: error:   755
+CoreData: error:   755
+2026-11-24 01:18:01.037691+0000 SnoreLog[18307:53420] [error] CoreData: error:   component is not a symbolic link
+CoreData: error:   component is not a symbolic link
+2026-11-24 01:18:01.038019+0000 SnoreLog[18307:53420] [error] CoreData: error:   component is readable
+CoreData: error:   component is readable
+2026-11-24 01:18:01.038152+0000 SnoreLog[18307:53420] [error] CoreData: error:   component is writeable
+CoreData: error:   component is writeable
+2026-11-24 01:18:01.038416+0000 SnoreLog[18307:53420] [error] CoreData: error: Information for /Users/runner/Library/Developer/CoreSimulator/Devices/87C401A1-6137-4CF6-8AAC-E12E171B64D7/data/Containers/Data/Application/A2BD8155-65EC-40C8-A37E-94F5328AC096
+CoreData: error: Information for /Users/runner/Library/Developer/CoreSimulator/Devices/87C401A1-6137-4CF6-8AAC-E12E171B64D7/data/Containers/Data/Application/A2BD8155-65EC-40C8-A37E-94F5328AC096
+2026-11-24 01:18:01.038563+0000 SnoreLog[18307:53420] [error] CoreData: error:   File Device ID: 	0
+CoreData: error:   File Device ID: 	0
+2026-11-24 01:18:01.038675+0000 SnoreLog[18307:53420] [error] CoreData: error:   Device ID: 		16777228
+CoreData: error:   Device ID: 		16777228
+2026-11-24 01:18:01.040894+0000 SnoreLog[18307:53420] [error] CoreData: error:   File Size: 		224 bytes
+CoreData: error:   File Size: 		224 bytes
+2026-11-24 01:18:01.040971+0000 SnoreLog[18307:53420] [error] CoreData: error:   File inode: 		3584487
+CoreData: error:   File inode: 		3584487
+2026-11-24 01:18:01.041033+0000 SnoreLog[18307:53420] [error] CoreData: error:   File user ID: 		501
+CoreData: error:   File user ID: 		501
+2026-11-24 01:18:01.041078+0000 SnoreLog[18307:53420] [error] CoreData: error:   File group ID: 		20
+CoreData: error:   File group ID: 		20
+2026-11-24 01:18:01.041115+0000 SnoreLog[18307:53420] [error] CoreData: error:   File Permissions:
+CoreData: error:   File Permissions: 	
+2026-11-24 01:18:01.041150+0000 SnoreLog[18307:53420] [error] CoreData: error: d
+CoreData: error: d
+2026-11-24 01:18:01.041187+0000 SnoreLog[18307:53420] [error] CoreData: error:   755
+CoreData: error:   755
+2026-11-24 01:18:01.041223+0000 SnoreLog[18307:53420] [error] CoreData: error:   component is not a symbolic link
+CoreData: error:   component is not a symbolic link
+2026-11-24 01:18:01.041634+0000 SnoreLog[18307:53420] [error] CoreData: error:   component is readable
+CoreData: error:   component is readable
+2026-11-24 01:18:01.041689+0000 SnoreLog[18307:53420] [error] CoreData: error:   component is writeable
+CoreData: error:   component is writeable
+2026-11-24 01:18:01.041744+0000 SnoreLog[18307:53420] [error] CoreData: error: Information for /Users/runner/Library/Developer/CoreSimulator/Devices/87C401A1-6137-4CF6-8AAC-E12E171B64D7/data/Containers/Data/Application/A2BD8155-65EC-40C8-A37E-94F5328AC096/Library
+CoreData: error: Information for /Users/runner/Library/Developer/CoreSimulator/Devices/87C401A1-6137-4CF6-8AAC-E12E171B64D7/data/Containers/Data/Application/A2BD8155-65EC-40C8-A37E-94F5328AC096/Library
+2026-11-24 01:18:01.041785+0000 SnoreLog[18307:53420] [error] CoreData: error:   File Device ID: 	0
+CoreData: error:   File Device ID: 	0
+2026-11-24 01:18:01.041829+0000 SnoreLog[18307:53420] [error] CoreData: error:   Device ID: 		16777228
+CoreData: error:   Device ID: 		16777228
+2026-11-24 01:18:01.047779+0000 SnoreLog[18307:53420] [error] CoreData: error:   File Size: 		160 bytes
+CoreData: error:   File Size: 		160 bytes
+2026-11-24 01:18:01.047833+0000 SnoreLog[18307:53420] [error] CoreData: error:   File inode: 		3584489
+CoreData: error:   File inode: 		3584489
+2026-11-24 01:18:01.047893+0000 SnoreLog[18307:53420] [error] CoreData: error:   File user ID: 		501
+CoreData: error:   File user ID: 		501
+2026-11-24 01:18:01.047938+0000 SnoreLog[18307:53420] [error] CoreData: error:   File group ID: 		20
+CoreData: error:   File group ID: 		20
+2026-11-24 01:18:01.047978+0000 SnoreLog[18307:53420] [error] CoreData: error:   File Permissions:
+CoreData: error:   File Permissions: 	
+2026-11-24 01:18:01.048018+0000 SnoreLog[18307:53420] [error] CoreData: error: d
+CoreData: error: d
+2026-11-24 01:18:01.048063+0000 SnoreLog[18307:53420] [error] CoreData: error:   755
+CoreData: error:   755
+2026-11-24 01:18:01.055046+0000 SnoreLog[18307:53420] [error] CoreData: error:   component is not a symbolic link
+CoreData: error:   component is not a symbolic link
+2026-11-24 01:18:01.055376+0000 SnoreLog[18307:53420] [error] CoreData: error:   component is readable
+CoreData: error:   component is readable
+2026-11-24 01:18:01.055570+0000 SnoreLog[18307:53420] [error] CoreData: error:   component is writeable
+CoreData: error:   component is writeable
+2026-11-24 01:18:01.055716+0000 SnoreLog[18307:53420] [error] CoreData: error: Failed to stat path '/Users/runner/Library/Developer/CoreSimulator/Devices/87C401A1-6137-4CF6-8AAC-E12E171B64D7/data/Containers/Data/Application/A2BD8155-65EC-40C8-A37E-94F5328AC096/Library/Application Support', errno 2 / No such file or directory.
+CoreData: error: Failed to stat path '/Users/runner/Library/Developer/CoreSimulator/Devices/87C401A1-6137-4CF6-8AAC-E12E171B64D7/data/Containers/Data/Application/A2BD8155-65EC-40C8-A37E-94F5328AC096/Library/Application Support', errno 2 / No such file or directory.
+2026-11-24 01:18:01.056097+0000 SnoreLog[18307:53420] [error] CoreData: error:   Sandbox access to file-write-create denied
+CoreData: error:   Sandbox access to file-write-create denied
+2026-11-24 01:18:01.056460+0000 SnoreLog[18307:53420] [error] CoreData: error: addPersistentStoreWithType:configuration:URL:options:error: returned error NSCocoaErrorDomain (512)
+CoreData: error: addPersistentStoreWithType:configuration:URL:options:error: returned error NSCocoaErrorDomain (512)
+2026-11-24 01:18:01.056550+0000 SnoreLog[18307:53420] [error] CoreData: error: userInfo:
+CoreData: error: userInfo:
+2026-11-24 01:18:01.056613+0000 SnoreLog[18307:53420] [error] CoreData: error: 	reason : Failed to create file; code = 2
+CoreData: error: 	reason : Failed to create file; code = 2
+2026-11-24 01:18:01.056671+0000 SnoreLog[18307:53420] [error] CoreData: error: storeType: SQLite
+CoreData: error: storeType: SQLite
+2026-11-24 01:18:01.056732+0000 SnoreLog[18307:53420] [error] CoreData: error: configuration: default
+CoreData: error: configuration: default
+2026-11-24 01:18:01.056798+0000 SnoreLog[18307:53420] [error] CoreData: error: URL: file:///Users/runner/Library/Developer/CoreSimulator/Devices/87C401A1-6137-4CF6-8AAC-E12E171B64D7/data/Containers/Data/Application/A2BD8155-65EC-40C8-A37E-94F5328AC096/Library/Application%20Support/default.store
+CoreData: error: URL: file:///Users/runner/Library/Developer/CoreSimulator/Devices/87C401A1-6137-4CF6-8AAC-E12E171B64D7/data/Containers/Data/Application/A2BD8155-65EC-40C8-A37E-94F5328AC096/Library/Application%20Support/default.store
+CoreData: annotation: options:
+CoreData: annotation: 	NSMigratePersistentStoresAutomaticallyOption : 1
+CoreData: annotation: 	NSInferMappingModelAutomaticallyOption : 1
+CoreData: annotation: 	NSPersistentStoreRemoteChangeNotificationOptionKey : 1
+CoreData: annotation: 	NSPersistentHistoryTrackingKey : 1
+2026-11-24 01:18:01.059152+0000 SnoreLog[18307:53420] [error] CoreData: error: <NSPersistentStoreCoordinator: 0x600002c0c700>: Attempting recovery from error encountered during addPersistentStore: 0x600000c04d20 Error Domain=NSCocoaErrorDomain Code=512 "The file couldn’t be saved." UserInfo={reason=Failed to create file; code = 2}
+CoreData: error: <NSPersistentStoreCoordinator: 0x600002c0c700>: Attempting recovery from error encountered during addPersistentStore: 0x600000c04d20 Error Domain=NSCocoaErrorDomain Code=512 "The file couldn’t be saved." UserInfo={reason=Failed to create file; code = 2}
+2026-11-24 01:18:01.059370+0000 SnoreLog[18307:53420] [error] CoreData: error: During recovery, parent directory path reported as missing
+CoreData: error: During recovery, parent directory path reported as missing
+2026-11-24 01:18:01.074808+0000 SnoreLog[18307:53420] [error] CoreData: error: Recovery attempt while adding <NSPersistentStoreDescription: 0x600000c04d20> (type: SQLite, url: file:///Users/runner/Library/Developer/CoreSimulator/Devices/87C401A1-6137-4CF6-8AAC-E12E171B64D7/data/Containers/Data/Application/A2BD8155-65EC-40C8-A37E-94F5328AC096/Library/Application%20Support/default.store) was successful!
+CoreData: error: Recovery attempt while adding <NSPersistentStoreDescription: 0x600000c04d20> (type: SQLite, url: file:///Users/runner/Library/Developer/CoreSimulator/Devices/87C401A1-6137-4CF6-8AAC-E12E171B64D7/data/Containers/Data/Application/A2BD8155-65EC-40C8-A37E-94F5328AC096/Library/Application%20Support/default.store) was successful!
+Test Suite 'All tests' started at 2026-11-24 01:18:03.747.
+Test Suite 'All tests' passed at 2026-11-24 01:18:03.748.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 124.4
+↳ Target Platform: arm64-apple-ios13.0-simulator
+◇ Suite NightComparisonTests started.
+◇ Suite FormatterTests started.
+◇ Suite EpisodeBuilderTests started.
+◇ Suite FactorImpactTests started.
+◇ Test verdictTreatsSmallChangesAsSimilar() started.
+◇ Test findsAddedAndRemovedTags() started.
+◇ Test bedtimeShiftWrapsAroundMidnight() started.
+◇ Test picksTheLatestEarlierNight() started.
+◇ Test noHintsWhenNothingChanged() started.
+◇ Suite NightScoringTests started.
+◇ Test personalPatternOverridesGeneralKnowledge() started.
+◇ Test formatsDurations() started.
+◇ Test ignoresWindowsBelowThreshold() started.
+◇ Test splitsEpisodesAfterALongGap() started.
+◇ Test mergesSnoresWithinOneBreathCycle() started.
+◇ Test keepsHighestConfidenceAndHandlesUnsortedInput() started.
+◇ Test dropsEpisodesShorterThanMinimum() started.
+◇ Test overlappingWindowsDoNotShrinkTheEpisode() started.
+◇ Test comparesNightsWithAndWithoutFactor() started.
+◇ Test factorOnEveryNightHasNoComparison() started.
+◇ Test hintsMatchingTheChangeComeFirst() started.
+✔ Test bedtimeShiftWrapsAroundMidnight() passed after 0.214 seconds.
+✔ Test picksTheLatestEarlierNight() passed after 0.214 seconds.
+✔ Test findsAddedAndRemovedTags() passed after 0.214 seconds.
+◇ Test noiseFloorIsTenthPercentile() started.
+◇ Test downsampleAveragesGroups() started.
+◇ Test scoreIsWeightedShareOfNight() started.
+◇ Test intensityFromRiseAboveNoiseFloor() started.
+◇ Test peakFindsLoudestSecondInRange() started.
+✔ Test noHintsWhenNothingChanged() passed after 0.214 seconds.
+✔ Test formatsDurations() passed after 0.214 seconds.
+✔ Test ignoresWindowsBelowThreshold() passed after 0.002 seconds.
+✔ Test splitsEpisodesAfterALongGap() passed after 0.002 seconds.
+✔ Test mergesSnoresWithinOneBreathCycle() passed after 0.002 seconds.
+✔ Test keepsHighestConfidenceAndHandlesUnsortedInput() passed after 0.002 seconds.
+✔ Test dropsEpisodesShorterThanMinimum() passed after 0.002 seconds.
+✔ Test overlappingWindowsDoNotShrinkTheEpisode() passed after 0.003 seconds.
+✔ Test comparesNightsWithAndWithoutFactor() passed after 0.082 seconds.
+✔ Test factorOnEveryNightHasNoComparison() passed after 0.082 seconds.
+✔ Test personalPatternOverridesGeneralKnowledge() passed after 0.294 seconds.
+✔ Test hintsMatchingTheChangeComeFirst() passed after 0.082 seconds.
+✔ Test verdictTreatsSmallChangesAsSimilar() passed after 0.295 seconds.
+✔ Test noiseFloorIsTenthPercentile() passed after 0.080 seconds.
+✔ Test scoreIsWeightedShareOfNight() passed after 0.080 seconds.
+✔ Test intensityFromRiseAboveNoiseFloor() passed after 0.080 seconds.
+✔ Test peakFindsLoudestSecondInRange() passed after 0.080 seconds.
+✔ Test downsampleAveragesGroups() passed after 0.080 seconds.
+✔ Suite FormatterTests passed after 0.295 seconds.
+✔ Suite FactorImpactTests passed after 0.295 seconds.
+✔ Suite NightComparisonTests passed after 0.295 seconds.
+✔ Suite NightScoringTests passed after 0.295 seconds.
+✔ Suite EpisodeBuilderTests passed after 0.295 seconds.
+✔ Test run with 21 tests passed after 0.296 seconds.
+2026-11-24 01:18:14.465751+0000 SnoreLog[18307:54037] [Default] Xcode took 10.41 seconds to acknowledge that testing finished.
+2026-11-24 01:18:17.279 xcodebuild[2095:9644] [MT] IDETestOperationsObserverDebug: 509.320 elapsed -- Testing started completed.
+2026-11-24 01:18:17.280 xcodebuild[2095:9644] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-11-24 01:18:17.280 xcodebuild[2095:9644] [MT] IDETestOperationsObserverDebug: 509.352 sec, +509.352 sec -- end
+
+Test session results, code coverage, and logs:
+	/Users/runner/Library/Developer/Xcode/DerivedData/SnoreLog-edevoajgxeabzdgjnumvwlrxqdso/Logs/Test/Test-SnoreLog-2026.11.24_01-09-15-+0000.xcresult
+
+** TEST SUCCEEDED **
+
+Testing started
