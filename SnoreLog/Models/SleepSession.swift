@@ -36,8 +36,23 @@ final class SleepSession {
     var dayCaffeineMilligrams: Double?
     var dayLateCaffeineMilligrams: Double?
     var dayAlcoholicDrinks: Double?
+    /// Drinks logged in the 3 hours before bed.
+    var dayLateAlcoholicDrinks: Double?
+    /// Strongest sinus congestion symptom logged in Health that day, 0 to 3.
+    var dayCongestionLevel: Int?
     /// When Health was last read for this night. Nil means never.
     var dayImportedAt: Date?
+
+    /// How blocked the nose felt at bedtime, 0 (clear) to 3. Nil when not noted.
+    var noseLevel: Int?
+    /// How the person slept, noted in the morning. Raw value of `SleepPosition`.
+    var sleepPositionRaw: String?
+
+    // Outdoor weather at bedtime, from Apple Weather, when automatic weather is on.
+    var weatherTemperatureCelsius: Double?
+    var weatherHumidity: Double?
+    var weatherPressureHectopascals: Double?
+    var weatherCondition: String?
 
     @Relationship(deleteRule: .cascade, inverse: \SnoreEpisode.session)
     var episodes: [SnoreEpisode] = []
@@ -69,6 +84,29 @@ final class SleepSession {
     }
 
     var folderURL: URL { SessionStorage.folder(for: id) }
+
+    var sleepPosition: SleepPosition? {
+        get { sleepPositionRaw.flatMap(SleepPosition.init(rawValue:)) }
+        set { sleepPositionRaw = newValue?.rawValue }
+    }
+
+    var weather: NightWeather? {
+        get {
+            let weather = NightWeather(
+                temperatureCelsius: weatherTemperatureCelsius,
+                humidity: weatherHumidity,
+                pressureHectopascals: weatherPressureHectopascals,
+                condition: weatherCondition
+            )
+            return weather.isEmpty ? nil : weather
+        }
+        set {
+            weatherTemperatureCelsius = newValue?.temperatureCelsius
+            weatherHumidity = newValue?.humidity
+            weatherPressureHectopascals = newValue?.pressureHectopascals
+            weatherCondition = newValue?.condition
+        }
+    }
 }
 
 @Model
@@ -132,7 +170,8 @@ enum SessionStorage {
 enum NightFactors {
     /// About the day: filled in from Apple Health when it's on, or tagged by hand.
     static let day = DaytimeTag.manual
-    static let factors = ["Alcohol", "Congested", "Late meal", "Very tired", "Slept on back", "Smoking"]
+    /// "Congested" became the nose picker and "Slept on back" the morning position question.
+    static let factors = ["Alcohol", DaytimeTag.drinksNearBed, "Late meal", "Very tired", "Smoking"]
     static let remedies = ["Side sleeping", "Nasal strip", "Mouth tape", "Anti-snore pillow", "Mouthguard", "Nasal spray"]
 }
 
@@ -147,7 +186,10 @@ extension SleepSession {
             episodeCount: episodes.count,
             loudEpisodeCount: episodes.filter { $0.intensity >= .loud }.count,
             factors: factors,
-            daytime: daytime
+            daytime: daytime,
+            noseLevel: noseLevel,
+            sleepPosition: sleepPosition,
+            weather: weather
         )
     }
 
@@ -161,7 +203,9 @@ extension SleepSession {
                 waterMilliliters: dayWaterMilliliters,
                 caffeineMilligrams: dayCaffeineMilligrams,
                 lateCaffeineMilligrams: dayLateCaffeineMilligrams,
-                alcoholicDrinks: dayAlcoholicDrinks
+                alcoholicDrinks: dayAlcoholicDrinks,
+                lateAlcoholicDrinks: dayLateAlcoholicDrinks,
+                congestionLevel: dayCongestionLevel
             )
             return activity.isEmpty ? nil : activity
         }
@@ -173,9 +217,11 @@ extension SleepSession {
             dayCaffeineMilligrams = newValue?.caffeineMilligrams
             dayLateCaffeineMilligrams = newValue?.lateCaffeineMilligrams
             dayAlcoholicDrinks = newValue?.alcoholicDrinks
+            dayLateAlcoholicDrinks = newValue?.lateAlcoholicDrinks
+            dayCongestionLevel = newValue?.congestionLevel
         }
     }
 
-    /// Manual tags plus tags earned from Health data.
-    var allFactors: [String] { NightSnapshot.combine(factors, daytime?.tags ?? []) }
+    /// Manual tags, nose, position and weather tags, plus tags earned from Health data.
+    var allFactors: [String] { snapshot.allFactors }
 }

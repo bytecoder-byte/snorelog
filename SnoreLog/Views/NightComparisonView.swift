@@ -179,6 +179,7 @@ struct ImpactSection: View {
         case .added: "New this night"
         case .removed: "Not this night"
         case .timing: nil
+        case .combination: "Together"
         }
     }
 
@@ -224,7 +225,9 @@ struct EditTagsSheet: View {
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Save") {
-                        night.factors = selection.sorted()
+                        // Keep tags this sheet doesn't show, such as ones from older versions of the app.
+                        let shown = Set(NightFactors.day + NightFactors.factors + NightFactors.remedies)
+                        night.factors = (selection.union(night.factors.filter { !shown.contains($0) })).sorted()
                         try? context.save()
                         dismiss()
                     }
@@ -258,6 +261,9 @@ struct DaytimeSection: View {
         Row(title: "Water", symbol: "drop.fill", value: \.waterMilliliters, format: DaytimeActivity.liters),
         Row(title: "Caffeine", symbol: "cup.and.saucer.fill", value: \.caffeineMilligrams, format: { "\(Int($0.rounded())) mg" }),
         Row(title: "Alcohol", symbol: "wineglass.fill", value: \.alcoholicDrinks, format: { $0 == 1 ? "1 drink" : "\(DaytimeActivity.count($0)) drinks" }),
+        Row(title: "Last 3 h", symbol: "clock.fill", value: \.lateAlcoholicDrinks, format: { $0 == 1 ? "1 drink" : "\(DaytimeActivity.count($0)) drinks" }),
+        Row(title: "Congestion", symbol: "nose.fill", value: { day in day.congestionLevel.map { Double($0) } },
+            format: { NoseLevel(rawValue: Int($0))?.title ?? "–" }),
     ]
 
     private var visibleRows: [Row] {

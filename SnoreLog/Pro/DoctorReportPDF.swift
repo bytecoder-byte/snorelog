@@ -62,6 +62,7 @@ private final class PageWriter {
         keyNumbers()
         scoreChart()
         tagTable()
+        bodyReadings()
         nightlyLog()
         howToRead()
     }
@@ -116,6 +117,8 @@ private final class PageWriter {
         }
         subtitle += ". Created \(report.generatedAt.formatted(date: .long, time: .omitted))."
         paragraph(subtitle, font: .systemFont(ofSize: 11), color: muted)
+        paragraph("Snoring log and Health data summary for discussion with your clinician. Not a diagnostic report.",
+                  font: .systemFont(ofSize: 9.5), color: muted)
         y += 10
 
         // Blank lines the person can fill in before handing it over.
@@ -252,6 +255,61 @@ private final class PageWriter {
                     "\(Int((item.averageWithout ?? 0).rounded()))", diffText]
         }
         table(columns: columns, rows: rows)
+        y += 14
+    }
+
+    /// Weight and blood pressure from the person's own devices, as recorded. No ranges, labels or colors.
+    func bodyReadings() {
+        let weeks = report.bodyWeeks
+        guard !weeks.isEmpty else { return }
+        ensureSpace(100)
+        sectionTitle("Weight and blood pressure, week by week")
+        paragraph("From the person's scale or home cuff through Apple Health, or entered by hand. SnoreLog does not measure these. Values are shown as recorded, without interpretation.",
+                  font: .systemFont(ofSize: 9), color: muted)
+        y += 6
+
+        let columns: [(String, CGFloat, NSTextAlignment)] = [
+            ("Week of", 0.20, .left), ("Nights", 0.12, .right), ("Snoring share", 0.18, .right),
+            ("Weight (avg)", 0.20, .right), ("Blood pressure (avg)", 0.30, .right),
+        ]
+        let rows = weeks.reversed().map { week -> [String] in
+            [
+                shortDate(week.weekStart),
+                week.nightCount > 0 ? "\(week.nightCount)" : "-",
+                week.snoringPercent.map { String(format: "%.0f%%", $0) } ?? "-",
+                week.averageWeight.map { BodyFormat.weight($0) } ?? "-",
+                week.averageSystolic.map { systolic in
+                    let diastolic = Int((week.averageDiastolic ?? 0).rounded())
+                    let count = week.pressureReadingCount
+                    return "\(Int(systolic.rounded()))/\(diastolic) mmHg (\(count) \(count == 1 ? "reading" : "readings"))"
+                } ?? "-",
+            ]
+        }
+        table(columns: columns, rows: rows)
+        y += 14
+
+        let pressures = report.pressureReadings
+        guard !pressures.isEmpty else { return }
+        ensureSpace(80)
+        sectionTitle("Blood pressure readings")
+        let readingColumns: [(String, CGFloat, NSTextAlignment)] = [
+            ("Date", 0.22, .left), ("Time", 0.14, .left), ("Reading (mmHg)", 0.20, .right), ("Source", 0.44, .left),
+        ]
+        let limit = 40
+        let readingRows = pressures.reversed().prefix(limit).map { reading -> [String] in
+            [
+                reading.date.formatted(.dateTime.weekday(.abbreviated).month(.abbreviated).day()),
+                reading.date.formatted(date: .omitted, time: .shortened),
+                reading.pressureText,
+                reading.source,
+            ]
+        }
+        table(columns: readingColumns, rows: Array(readingRows))
+        if pressures.count > limit {
+            y += 4
+            paragraph("Showing the latest \(limit) of \(pressures.count) readings. Weekly averages above include all of them.",
+                      font: .systemFont(ofSize: 8.5), color: muted)
+        }
         y += 14
     }
 

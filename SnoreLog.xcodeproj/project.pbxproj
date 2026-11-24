@@ -334,7 +334,8 @@
 				INFOPLIST_KEY_CFBundleDisplayName = SnoreLog;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "SnoreLog listens while you sleep to find snoring. Audio is analyzed on your iPhone and never uploaded.";
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "SnoreLog reads your workouts, steps, water, caffeine and alcohol from the day before each night to show what might affect your snoring. It never writes to Health and the data stays on your iPhone.";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "SnoreLog reads your workouts, steps, water, caffeine, alcohol and sinus congestion from the day before each night, and your weight and blood pressure, to show them next to your snoring. It never writes to Health and the data stays on your iPhone.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "With automatic weather on, SnoreLog uses your approximate location when you start a night to note the outdoor weather from Apple Weather. Your location is not stored.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -367,7 +368,8 @@
 				INFOPLIST_KEY_CFBundleDisplayName = SnoreLog;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "SnoreLog listens while you sleep to find snoring. Audio is analyzed on your iPhone and never uploaded.";
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "SnoreLog reads your workouts, steps, water, caffeine and alcohol from the day before each night to show what might affect your snoring. It never writes to Health and the data stays on your iPhone.";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "SnoreLog reads your workouts, steps, water, caffeine, alcohol and sinus congestion from the day before each night, and your weight and blood pressure, to show them next to your snoring. It never writes to Health and the data stays on your iPhone.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "With automatic weather on, SnoreLog uses your approximate location when you start a night to note the outdoor weather from Apple Weather. Your location is not stored.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

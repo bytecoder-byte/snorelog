@@ -90,4 +90,6 @@ enum SettingsKeys {
     static let hasSeenIntro = "hasSeenIntro"
     /// Read daytime activity from Apple Health. Also settable with the launch argument `-useHealth YES`.
     static let useHealth = "useHealth"
+    /// Fill in the outdoor weather at bedtime from Apple Weather. Also settable with `-autoWeather YES`.
+    static let autoWeather = "autoWeather"
 }

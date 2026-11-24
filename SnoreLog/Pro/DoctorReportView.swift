@@ -8,12 +8,15 @@ struct DoctorReportView: View {
     @Environment(ProStore.self) private var store
     @Environment(\.dismiss) private var dismiss
     @Query(sort: \SleepSession.startDate, order: .reverse) private var nights: [SleepSession]
+    @Query(sort: \BodyReading.date) private var readings: [BodyReading]
+    @Environment(\.modelContext) private var context
     @State private var period: ReportPeriod = .month
     @State private var fileURL: URL?
     @State private var pdfData: Data?
 
     private var report: DoctorReport {
-        DoctorReport(nights: nights.filter { $0.status == .done }.map(\.snapshot), period: period)
+        DoctorReport(nights: nights.filter { $0.status == .done }.map(\.snapshot), period: period,
+                     readings: readings.map(\.asValue))
     }
 
     var body: some View {
@@ -71,13 +74,15 @@ struct DoctorReportView: View {
                     Button("Done") { dismiss() }
                 }
             }
-            .task(id: TaskKey(period: period, count: nights.count)) { generate() }
+            .task(id: TaskKey(period: period, count: nights.count, readingCount: readings.count)) { generate() }
+            .task { await HealthImporter.refreshBodyReadings(in: context) }
         }
     }
 
     private struct TaskKey: Equatable {
         var period: ReportPeriod
         var count: Int
+        var readingCount: Int
     }
 
     private func generate() {

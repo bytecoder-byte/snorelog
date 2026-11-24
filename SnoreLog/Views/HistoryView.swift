@@ -6,6 +6,8 @@ struct HistoryView: View {
     @Environment(\.modelContext) private var context
     @Query(sort: \SleepSession.startDate, order: .reverse) private var nights: [SleepSession]
     @State private var showingReport = false
+    @State private var showingTrends = false
+    @Environment(ProStore.self) private var store
 
     private var analyzed: [SleepSession] { nights.filter { $0.status == .done } }
 
@@ -20,6 +22,19 @@ struct HistoryView: View {
                     )
                 } else {
                     if analyzed.count >= 2 { trend }
+                    Section {
+                        Button {
+                            showingTrends = true
+                        } label: {
+                            HStack {
+                                Label("Weight & blood pressure", systemImage: "chart.xyaxis.line")
+                                Spacer()
+                                if !store.isPro { ProBadge() }
+                            }
+                        }
+                    } footer: {
+                        Text("Your weekly snoring next to readings from your scale or cuff.")
+                    }
                     impact
                     Section("Nights") {
                         ForEach(nights) { night in
@@ -39,6 +54,7 @@ struct HistoryView: View {
                 }
             }
             .sheet(isPresented: $showingReport) { DoctorReportView() }
+            .sheet(isPresented: $showingTrends) { BodyTrendsView() }
         }
     }
 

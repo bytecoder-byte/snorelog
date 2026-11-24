@@ -84,6 +84,8 @@ struct PaywallView: View {
         VStack(alignment: .leading, spacing: 16) {
             Feature(icon: "doc.richtext", title: "PDF report for your doctor",
                     detail: "A clear summary of your nights, scores and tags, ready to print or share.")
+            Feature(icon: "chart.xyaxis.line", title: "Weight and blood pressure trends",
+                    detail: "Your weekly snoring next to readings from your scale or cuff, also in the PDF.")
             Feature(icon: "sparkles", title: "New Pro features as they arrive",
                     detail: "Included in your plan at no extra cost.")
             Feature(icon: "heart", title: "Support an independent app",

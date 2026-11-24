@@ -9,7 +9,7 @@ struct SnoreLogApp: App {
 
     init() {
         do {
-            container = try ModelContainer(for: SleepSession.self, SnoreEpisode.self)
+            container = try ModelContainer(for: SleepSession.self, SnoreEpisode.self, BodyReading.self)
         } catch {
             fatalError("Could not open the database: \(error)")
         }

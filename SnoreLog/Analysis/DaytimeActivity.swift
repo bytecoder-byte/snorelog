@@ -16,10 +16,14 @@ struct DaytimeActivity: Equatable {
     /// Caffeine logged from 3 PM onwards.
     var lateCaffeineMilligrams: Double?
     var alcoholicDrinks: Double?
+    /// The part of `alcoholicDrinks` logged in the last 3 hours before bed.
+    var lateAlcoholicDrinks: Double? = nil
+    /// The strongest sinus congestion symptom logged in Health that day, on the 0 to 3 scale of `NoseLevel`.
+    var congestionLevel: Int? = nil
 
     var isEmpty: Bool {
-        [workoutMinutes, strengthMinutes, steps, waterMilliliters, caffeineMilligrams, lateCaffeineMilligrams, alcoholicDrinks]
-            .allSatisfy { $0 == nil }
+        [workoutMinutes, strengthMinutes, steps, waterMilliliters, caffeineMilligrams, lateCaffeineMilligrams, alcoholicDrinks, lateAlcoholicDrinks]
+            .allSatisfy { $0 == nil } && congestionLevel == nil
     }
 
     // Thresholds for turning numbers into tags.
@@ -30,6 +34,9 @@ struct DaytimeActivity: Equatable {
     static let lateCaffeineThreshold = 50.0
     /// Caffeine logged at or after this hour counts as late.
     static let lateCaffeineHour = 15
+    /// Drinks logged this close to bedtime count as "near bedtime". Sleep-lab studies found
+    /// alcohol's effect on snoring is strongest in the first hours after drinking.
+    static let lateAlcoholHours = 3.0
 
     /// The tags this day earns. They use the same names as the manual "Your day" tags,
     /// so a manual tag and a Health reading count as the same thing.
@@ -42,6 +49,8 @@ struct DaytimeActivity: Equatable {
         if let waterMilliliters, waterMilliliters > 0, waterMilliliters < Self.lowWaterMilliliters { tags.append(DaytimeTag.lowWater) }
         if let lateCaffeineMilligrams, lateCaffeineMilligrams >= Self.lateCaffeineThreshold { tags.append(DaytimeTag.lateCaffeine) }
         if let alcoholicDrinks, alcoholicDrinks >= 1 { tags.append(DaytimeTag.alcohol) }
+        if let lateAlcoholicDrinks, lateAlcoholicDrinks >= 1 { tags.append(DaytimeTag.drinksNearBed) }
+        if let congestionLevel, let tag = NoseLevel(rawValue: min(3, max(0, congestionLevel)))?.tag { tags.append(tag) }
         return tags
     }
 
@@ -63,6 +72,13 @@ struct DaytimeActivity: Equatable {
             return lateCaffeineMilligrams.map { "\(Int($0.rounded())) mg of caffeine after 3 PM" }
         case DaytimeTag.alcohol:
             return alcoholicDrinks.map { $0 == 1 ? "1 drink logged" : "\(Self.count($0)) drinks logged" }
+        case DaytimeTag.drinksNearBed:
+            return lateAlcoholicDrinks.map {
+                ($0 == 1 ? "1 drink" : "\(Self.count($0)) drinks") + " logged in the 3 hours before bed"
+            }
+        case ContextTag.noseSlightly, ContextTag.noseBlocked:
+            return congestionLevel.flatMap { NoseLevel(rawValue: min(3, max(0, $0))) }
+                .map { "Sinus congestion logged in Health (\($0.title.lowercased()))" }
         default:
             return nil
         }
@@ -73,6 +89,13 @@ struct DaytimeActivity: Equatable {
     static func liters(_ value: Double) -> String { (value / 1000).formatted(.number.precision(.fractionLength(1))) + " L" }
 
     /// The part of the day before a night that counts: from the start of that day until bedtime.
+    /// The last `lateAlcoholHours` of the window before bed.
+    static func lateAlcoholWindow(beforeBedtime bedtime: Date, calendar: Calendar = .current) -> DateInterval {
+        let day = Self.window(beforeBedtime: bedtime, calendar: calendar)
+        let start = max(day.start, bedtime.addingTimeInterval(-lateAlcoholHours * 3600))
+        return DateInterval(start: min(start, day.end), end: day.end)
+    }
+
     /// Bedtimes before 6 AM belong to the day before (going to bed at 1 AM ends Tuesday, not Wednesday).
     static func window(beforeBedtime bedtime: Date, calendar: Calendar = .current) -> DateInterval {
         var day = calendar.startOfDay(for: bedtime)
@@ -92,6 +115,8 @@ enum DaytimeTag {
     static let lateCaffeine = "Late caffeine"
     /// The same tag as the bedtime one, so logging a drink in Health and tagging it don't double count.
     static let alcohol = "Alcohol"
+    /// Drinks in the last 3 hours before bed. Added on top of "Alcohol", so both comparisons work.
+    static let drinksNearBed = "Drinks near bedtime"
 
     /// Shown in the "Your day" picker for people who don't use Apple Health, or want to add to it.
     static let manual = [exercise, strength, activeDay, lowWater, lateCaffeine]
