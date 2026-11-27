@@ -7,12 +7,15 @@ struct SettingsView: View {
     @AppStorage(SettingsKeys.sensitivity) private var sensitivity: Sensitivity = .medium
     @AppStorage(SettingsKeys.keepFullRecordings) private var keepFullRecordings = false
     @AppStorage(SettingsKeys.useHealth) private var useHealth = false
+    @AppStorage(SettingsKeys.autoWeather) private var autoWeather = false
     @State private var healthError: String?
+    @State private var weatherError: String?
     @State private var storageText = ""
     @State private var confirmDeleteAll = false
     @Environment(ProStore.self) private var store
     @State private var showingPaywall = false
     @State private var showingReport = false
+    @State private var showingTrends = false
     @State private var showingManageSubscriptions = false
     @State private var restoreMessage: String?
 
@@ -46,8 +49,26 @@ struct SettingsView: View {
                     } header: {
                         Text("Your day")
                     } footer: {
-                        Text("Reads workouts, strength training, steps, water, caffeine and alcohol from the day before each night, so reports can show what might have made a difference. SnoreLog only reads from Health, never writes to it, and the data stays on your iPhone. Choose what it can read in the Health app. Without Health, you can tag your day by hand.")
+                        Text("Reads workouts, strength training, steps, water, caffeine, alcohol and sinus congestion from the day before each night, so reports can show what might have made a difference. With Pro it also reads weight and blood pressure from your scale or cuff. SnoreLog only reads from Health, never writes to it, and the data stays on your iPhone. Choose what it can read in the Health app. Without Health, you can tag your day by hand.")
                     }
+                }
+
+                Section {
+                    Toggle(isOn: Binding(get: { autoWeather }, set: setAutoWeather)) {
+                        Label {
+                            Text("Automatic weather")
+                        } icon: {
+                            Image(systemName: "cloud.sun.fill").symbolRenderingMode(.multicolor)
+                        }
+                    }
+                    if let weatherError {
+                        Text(weatherError).font(.footnote).foregroundStyle(.orange)
+                    }
+                    if autoWeather { WeatherAttributionView() }
+                } header: {
+                    Text("Weather")
+                } footer: {
+                    Text("Notes the outdoor temperature and humidity when you start a night, so you can see patterns across your own nights. Your approximate location (rounded to about 1 km) is sent to Apple Weather when you start a night. It is not stored.")
                 }
 
                 Section {
@@ -64,7 +85,7 @@ struct SettingsView: View {
                 }
 
                 Section("About") {
-                    Text("SnoreLog uses Apple's on-device sound recognition to find snoring. It is not a medical device and does not diagnose sleep apnea or any other condition. If you are worried about your sleep or breathing, talk to a doctor.")
+                    Text("SnoreLog uses Apple's on-device sound recognition to find snoring. It is not a medical device and does not diagnose any condition. If you're concerned about your snoring or sleep, talking to a healthcare professional may be helpful.")
                         .font(.footnote)
                         .foregroundStyle(.secondary)
                     LabeledContent("Version", value: Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "")
@@ -74,6 +95,7 @@ struct SettingsView: View {
             .onAppear(perform: refreshStorage)
             .sheet(isPresented: $showingPaywall) { PaywallView() }
             .sheet(isPresented: $showingReport) { DoctorReportView() }
+            .sheet(isPresented: $showingTrends) { BodyTrendsView() }
             .manageSubscriptionsSheet(isPresented: $showingManageSubscriptions)
             .alert("Restore purchases", isPresented: Binding(get: { restoreMessage != nil }, set: { if !$0 { restoreMessage = nil } })) {
                 Button("OK", role: .cancel) {}
@@ -111,6 +133,15 @@ struct SettingsView: View {
                     if !store.isPro { ProBadge() }
                 }
             }
+            Button {
+                showingTrends = true
+            } label: {
+                HStack {
+                    Label("Weight & blood pressure", systemImage: "chart.xyaxis.line")
+                    Spacer()
+                    if !store.isPro { ProBadge() }
+                }
+            }
             if !store.isPro {
                 Button("Restore purchases") {
                     Task {
@@ -144,8 +175,24 @@ struct SettingsView: View {
                 // Fill in the days before nights already recorded.
                 let nights = (try? context.fetch(FetchDescriptor<SleepSession>())) ?? []
                 await HealthImporter.refresh(nights, in: context, force: true)
+                await HealthImporter.refreshBodyReadings(in: context)
             } catch {
                 healthError = "Couldn't connect to Apple Health: \(error.localizedDescription)"
+            }
+        }
+    }
+
+    private func setAutoWeather(_ on: Bool) {
+        weatherError = nil
+        guard on else {
+            autoWeather = false
+            return
+        }
+        Task {
+            if await WeatherFetcher.requestAccess() {
+                autoWeather = true
+            } else {
+                weatherError = "Location access is off for SnoreLog. Turn it on in Settings > Privacy & Security > Location Services to use automatic weather."
             }
         }
     }

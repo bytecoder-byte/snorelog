@@ -14,10 +14,25 @@ struct NightSnapshot: Equatable {
     var factors: [String]
     /// The day before this night, from Apple Health. Nil when Health isn't used.
     var daytime: DaytimeActivity? = nil
+    /// 0 to 3, see `NoseLevel`. Nil when not noted.
+    var noseLevel: Int? = nil
+    var sleepPosition: SleepPosition? = nil
+    var weather: NightWeather? = nil
 
-    /// Manual tags plus the tags earned from Health data, without duplicates.
+    /// Manual tags, the nose, position and weather tags, and the tags earned from Health data, without duplicates.
     var allFactors: [String] {
-        NightSnapshot.combine(factors, daytime?.tags ?? [])
+        NightSnapshot.combine(factors + contextTags, healthTags)
+    }
+
+    /// Tags from the nose level, sleep position and weather noted for this night.
+    var contextTags: [String] {
+        [noseLevel.flatMap { NoseLevel(rawValue: $0)?.tag }, sleepPosition?.tag].compactMap { $0 } + (weather?.tags ?? [])
+    }
+
+    /// Tags earned from Health data. A nose level set by hand replaces the one from Health.
+    var healthTags: [String] {
+        let tags = daytime?.tags ?? []
+        return noseLevel == nil ? tags : tags.filter { !ContextTag.nose.contains($0) }
     }
 
     static func combine(_ manual: [String], _ health: [String]) -> [String] {
@@ -27,7 +42,7 @@ struct NightSnapshot: Equatable {
 
     /// True when a tag came from Health data rather than only from a manual tag.
     func isFromHealth(_ tag: String) -> Bool {
-        !factors.contains(tag) && (daytime?.tags.contains(tag) ?? false)
+        !factors.contains(tag) && !contextTags.contains(tag) && healthTags.contains(tag)
     }
 
     var snoringPercent: Double {
@@ -97,6 +112,8 @@ struct ImpactHint: Identifiable, Equatable {
         case removed
         /// Bedtime or time asleep changed.
         case timing
+        /// Two tags on this night that are known to add up, such as alcohol and back sleeping.
+        case combination
     }
 
     /// Which way this would be expected to move the score.
@@ -114,8 +131,14 @@ struct ImpactHint: Identifiable, Equatable {
     var id: String { title }
 
     /// Everyday tags that tend to go with more snoring. Remedies tend to go with less.
-    static let usuallyLouder: Set<String> = ["Alcohol", "Congested", "Late meal", "Very tired", "Slept on back", "Smoking", DaytimeTag.lowWater]
-    static let usuallyQuieter: Set<String> = ["Side sleeping", "Nasal strip", "Mouth tape", "Anti-snore pillow", "Mouthguard", "Nasal spray"]
+    static let usuallyLouder: Set<String> = [
+        "Alcohol", ContextTag.legacyCongested, "Late meal", "Very tired", ContextTag.back, "Smoking", DaytimeTag.lowWater,
+        DaytimeTag.drinksNearBed, ContextTag.noseSlightly, ContextTag.noseBlocked,
+    ]
+    static let usuallyQuieter: Set<String> = [
+        "Side sleeping", "Nasal strip", "Mouth tape", "Anti-snore pillow", "Mouthguard", "Nasal spray",
+        ContextTag.side, ContextTag.aid,
+    ]
 
     /// What is generally said about daytime tags whose effect on snoring varies from person to person.
     static let daytimeNotes: [String: String] = [
@@ -123,6 +146,19 @@ struct ImpactHint: Identifiable, Equatable {
         DaytimeTag.strength: "Activity can change how deeply you sleep.",
         DaytimeTag.activeDay: "Activity can change how deeply you sleep.",
         DaytimeTag.lateCaffeine: "Caffeine late in the day can make sleep lighter.",
+        ContextTag.mixed: "You moved between positions.",
+        ContextTag.cold: "Outdoor weather can change the air in your bedroom.",
+        ContextTag.warm: "Outdoor weather can change the air in your bedroom.",
+        ContextTag.humid: "Outdoor weather can change the air in your bedroom.",
+        ContextTag.dry: "Outdoor weather can change the air in your bedroom.",
+    ]
+
+    /// Specific wording for added tags, instead of the generic "Often goes with louder snoring".
+    static let addedNotes: [String: String] = [
+        DaytimeTag.drinksNearBed: "In sleep-lab studies, snoring rose most in the first hours after drinking.",
+        ContextTag.noseBlocked: "A blocked nose often goes with louder snoring.",
+        ContextTag.noseSlightly: "A blocked nose often goes with louder snoring.",
+        ContextTag.side: "Many people snore less on their side.",
     ]
 
     /// A personal pattern is used once a tag has been on this many nights and there are nights without it.
@@ -159,6 +195,21 @@ struct ImpactHint: Identifiable, Equatable {
                 kind: .removed,
                 effect: effect,
                 fromHealth: comparison.previous.isFromHealth(factor)
+            ))
+        }
+
+        // Alcohol and back sleeping: the effect of drinking was larger on the back in sleep-lab studies.
+        // Only when part of the pair is new this night, since hints are about what changed.
+        let tags = comparison.current.allFactors
+        let pair: Set<String> = [ContextTag.back, DaytimeTag.alcohol, DaytimeTag.drinksNearBed]
+        if tags.contains(ContextTag.back),
+           tags.contains(DaytimeTag.alcohol) || tags.contains(DaytimeTag.drinksNearBed),
+           comparison.addedFactors.contains(where: { pair.contains($0) }) {
+            hints.append(ImpactHint(
+                title: "Alcohol and back sleeping",
+                detail: "Both on the same night. In sleep-lab studies, alcohol's effect on snoring was larger on the back.",
+                kind: .combination,
+                effect: .louder
             ))
         }
 
@@ -223,12 +274,14 @@ struct ImpactHint: Identifiable, Equatable {
         }
 
         if usuallyLouder.contains(factor) {
+            let note = addedNotes[factor] ?? "Often goes with louder snoring."
             return (present ? .louder : .quieter,
-                    present ? "Often goes with louder snoring." : "Often goes with louder snoring. You had it the night before.")
+                    present ? note : "\(note) You had it the night before.")
         }
         if usuallyQuieter.contains(factor) {
+            let note = addedNotes[factor] ?? "Helps some people snore less."
             return (present ? .quieter : .louder,
-                    present ? "Helps some people snore less." : "Helps some people snore less. You used it the night before.")
+                    present ? note : "\(note) You used it the night before.")
         }
         if let note = daytimeNotes[factor] {
             return (.unclear, note + " Not enough nights yet to see your own pattern.")

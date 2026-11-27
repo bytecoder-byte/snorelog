@@ -12,7 +12,9 @@ struct ContentView: View {
             PaywallView()
         } else if DemoData.screen == "pdf" {
             DoctorReportView()
-        } else if ["report", "compare", "day"].contains(DemoData.screen ?? ""), let latest = nights.first {
+        } else if DemoData.screen == "trends" {
+            BodyTrendsView()
+        } else if ["report", "compare", "day", "night"].contains(DemoData.screen ?? ""), let latest = nights.first {
             // Used for screenshots: open the latest night's report directly.
             NavigationStack { NightReportView(night: latest) }
         } else {

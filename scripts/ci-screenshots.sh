@@ -39,10 +39,12 @@ shoot 2-tonight -demoData -hasSeenIntro YES -useHealth YES -screen tonight
 shoot 3-report -demoData -hasSeenIntro YES -screen report
 shoot 3b-compare -demoData -hasSeenIntro YES -useHealth YES -screen compare
 shoot 3c-day -demoData -hasSeenIntro YES -useHealth YES -screen day
+shoot 3d-night -demoData -hasSeenIntro YES -useHealth YES -screen night
 shoot 4-history -demoData -hasSeenIntro YES -screen history
-shoot 5-settings -demoData -hasSeenIntro YES -useHealth YES -screen settings
+shoot 5-settings -demoData -hasSeenIntro YES -useHealth YES -autoWeather YES -screen settings
 shoot 6-paywall -demoData -hasSeenIntro YES -screen paywall
 shoot 7-pdf-report -demoData -hasSeenIntro YES -proUnlocked -screen pdf
+shoot 8-trends -demoData -hasSeenIntro YES -proUnlocked -screen trends
 
 # The PDF screen also saves the report into the app's Documents folder. Copy it out.
 DATA_DIR="$(xcrun simctl get_app_container "$DEVICE_ID" "$BUNDLE_ID" data 2>/dev/null || true)"

@@ -9,6 +9,7 @@ struct TonightView: View {
     @AppStorage(SettingsKeys.useHealth) private var useHealth = false
 
     @State private var selectedFactors: Set<String> = []
+    @State private var noseLevel: Int?
     @State private var isAnalyzing = false
     @State private var progress: Double = 0
     @State private var finishedNight: SleepSession?
@@ -55,6 +56,7 @@ struct TonightView: View {
     private var setup: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
+                NosePicker(level: $noseLevel)
                 FactorPicker(title: "Anything different tonight?", options: NightFactors.factors, selection: $selectedFactors)
                 FactorPicker(title: "Trying a remedy?", options: NightFactors.remedies, selection: $selectedFactors)
                 FactorPicker(
@@ -93,11 +95,14 @@ struct TonightView: View {
             return
         }
         let night = SleepSession(factors: selectedFactors.sorted())
+        night.noseLevel = noseLevel
         context.insert(night)
         try? context.save()
         do {
             try recorder.start(in: night.folderURL)
             activeSessionID = night.id.uuidString
+            // Outdoor weather at bedtime, if automatic weather is on. Doesn't hold up the recording.
+            Task { await WeatherFetcher.fill(night, in: context) }
         } catch {
             context.delete(night)
             try? context.save()
@@ -111,6 +116,7 @@ struct TonightView: View {
         activeSessionID = ""
         night.endDate = .now
         selectedFactors = []
+        noseLevel = nil
         isAnalyzing = true
         progress = 0
         do {

@@ -22,11 +22,12 @@ struct ProStoreTests {
         return session
     }
 
-    /// The test StoreKit daemon can take a moment to list a new purchase in current entitlements.
-    private func refreshUntilPro(_ store: ProStore) async {
-        for _ in 0..<20 {
+    /// The test StoreKit daemon can take a moment to list a new purchase in current entitlements,
+    /// and to drop a purchase cleared by the test before. Waits until the expected plan is the active one.
+    private func refreshUntil(_ store: ProStore, plan: String) async {
+        for _ in 0..<40 {
             await store.refreshEntitlements()
-            if store.isPro { return }
+            if store.activePlanName == plan { return }
             try? await Task.sleep(for: .milliseconds(250))
         }
     }
@@ -62,7 +63,7 @@ struct ProStoreTests {
 
         let transaction = try await session.buyProduct(identifier: ProProducts.lifetime)
         #expect(transaction.productID == ProProducts.lifetime)
-        await refreshUntilPro(store)
+        await refreshUntil(store, plan: "Lifetime")
         #expect(store.isPro)
         #expect(store.activePlanName == "Lifetime")
     }
@@ -75,7 +76,7 @@ struct ProStoreTests {
 
         let transaction = try await session.buyProduct(identifier: ProProducts.yearly)
         #expect(transaction.productID == ProProducts.yearly)
-        await refreshUntilPro(store)
+        await refreshUntil(store, plan: "Yearly")
         #expect(store.isPro)
         #expect(store.activePlanName == "Yearly")
     }

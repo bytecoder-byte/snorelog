@@ -29,23 +29,40 @@ struct DoctorReport: Equatable {
     var nights: [NightSnapshot]
     var period: ReportPeriod
     var generatedAt: Date
+    /// Weight and blood pressure readings in the period, oldest first. Shown raw, never interpreted.
+    var readings: [BodyValue]
 
     /// A score under this counts as a quiet night. Matches the green band of the score ring.
     static let quietScore = 10
 
-    init(nights: [NightSnapshot], period: ReportPeriod, now: Date = .now, calendar: Calendar = .current) {
+    init(nights: [NightSnapshot], period: ReportPeriod, readings: [BodyValue] = [], now: Date = .now, calendar: Calendar = .current) {
         let sorted = nights.sorted { $0.startDate < $1.startDate }
+        let sortedReadings = readings.sorted { $0.date < $1.date }
         if period == .all {
             self.nights = sorted
+            self.readings = sortedReadings
         } else {
             let start = calendar.date(byAdding: .day, value: -period.rawValue, to: calendar.startOfDay(for: now)) ?? now
             self.nights = sorted.filter { $0.startDate >= start }
+            self.readings = sortedReadings.filter { $0.date >= start && $0.date <= now }
         }
+        self.calendar = calendar
         self.period = period
         self.generatedAt = now
     }
 
+    private var calendar: Calendar
+
     var isEmpty: Bool { nights.isEmpty }
+
+    var pressureReadings: [BodyValue] { readings.filter { $0.kind == .bloodPressure } }
+    var weightReadings: [BodyValue] { readings.filter { $0.kind == .weight } }
+
+    /// Weekly snoring share next to weekly weight and blood pressure averages. Empty without readings.
+    var bodyWeeks: [BodyTrendWeek] {
+        guard !readings.isEmpty else { return [] }
+        return BodyTrends.weeks(nights: nights, readings: readings, calendar: calendar)
+    }
     var nightCount: Int { nights.count }
     var firstNight: Date? { nights.first?.startDate }
     var lastNight: Date? { nights.last?.startDate }

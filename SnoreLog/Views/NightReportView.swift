@@ -32,6 +32,8 @@ struct NightReportView: View {
                 switch night.status {
                 case .done:
                     summary
+                    NightContextSection(night: night)
+                        .id("night")
                     if let comparison {
                         ComparisonSection(comparison: comparison)
                         ImpactSection(
@@ -66,9 +68,10 @@ struct NightReportView: View {
             }
             .task {
                 // Used for screenshots: scroll down to the comparison.
-                if DemoData.screen == "compare" || DemoData.screen == "day" {
+                let targets = ["compare": "impact", "day": "day", "night": "night"]
+                if let screen = DemoData.screen, let target = targets[screen] {
                     try? await Task.sleep(for: .milliseconds(600))
-                    proxy.scrollTo(DemoData.screen == "day" ? "day" : "impact", anchor: .top)
+                    proxy.scrollTo(target, anchor: .top)
                 }
             }
         }
@@ -200,7 +203,7 @@ struct NightReportView: View {
     private var healthNote: some View {
         Section {
             Label {
-                Text("Loud, frequent snoring is common, but it can also be a sign of sleep apnea. If you gasp, stop breathing or feel very tired during the day, talk to a doctor.")
+                Text("If you're concerned about your snoring or sleep, talking to a healthcare professional may be helpful.")
                     .font(.footnote)
             } icon: {
                 Image(systemName: "stethoscope")
